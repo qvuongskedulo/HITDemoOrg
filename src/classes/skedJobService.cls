@@ -103,7 +103,6 @@ global class skedJobService extends skedEventServiceBase {
     public static List<sked__Job__c> getJobs(jobQueryModel model) {
         string patientId = model.patientId;
         string caseId = model.caseId;
-        string offerId = model.offerId;
         DateTime startTime = model.startTime;
         DateTime endTime = model.endTime;
         string jobStatusCancelled = skedConstants.JOB_STATUS_CANCELLED;
@@ -131,7 +130,6 @@ global class skedJobService extends skedEventServiceBase {
         fields.add('sked__Timezone__c');
         fields.add('sked__Type__c');
         fields.add('sked_Case__c');
-        fields.add('sked_Offer__c');
         fields.add('sked_Is_Care_Team__c');
         if (model.addedFields != null && !model.addedFields.isEmpty()) {
             fields.addAll(model.addedFields);
@@ -151,9 +149,6 @@ global class skedJobService extends skedEventServiceBase {
         }
         if (!string.isBlank(caseId)) {
             conditions.add('sked_Case__c = :caseId');
-        }
-        if (!string.isBlank(offerId)) {
-            conditions.add('sked_Offer__c = :offerId');
         }
         conditions.add('sked__Start__c < :endTime');
         conditions.add('sked__Finish__c > :startTime');
@@ -425,7 +420,6 @@ global class skedJobService extends skedEventServiceBase {
     public class jobQueryModel {
         public string patientId {get;set;}
         public string caseId {get;set;}
-        public string offerId {get;set;}
         public DateTime startTime {get;set;}
         public DateTime endTime {get;set;}
         public List<string> jobTypes {get;set;}

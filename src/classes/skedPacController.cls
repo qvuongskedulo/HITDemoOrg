@@ -19,7 +19,6 @@ global class skedPacController {
             configData.regions = skedUtils.getRegions(null);
             configData.cancellationReasons = skedUtils.getPickListValues('sked__Job__c', 'sked_Cancellation_Reason__c');
             configData.cases = skedCommonService.getPatientCases(model.recId);
-            configData.offers = skedOfferService.getPatientOffers(model.recId);
             configData.contacts = skedCommonService.getAccountContacts(model.recId);
 
             configData.patient = new skedModels.patient();
@@ -71,7 +70,7 @@ global class skedPacController {
                 List<skedModels.job> jobs = new List<skedModels.job>();
 
                 for (sked__Job__c skedJob : skedJobs) {
-                    if (skedJob.sked_Case__c != model.caseId || skedJob.sked_Offer__c == model.offerId) {
+                    if (skedJob.sked_Case__c != model.caseId) {
                         skedModels.job job = (skedModels.job)skedAutoMapper.instance.mapTo(skedJob, skedModels.job.class);
                         job.loadJobTags(skedJob.sked__JobTags__r);
                         job.loadJobAllocations(skedJob.sked__Job_Allocations__r);
@@ -208,7 +207,6 @@ global class skedPacController {
         public List<skedModels.contact> contacts {get;set;}
         public skedSetting.skedPacSetting gridSettings {get;set;}
         public List<skedModels.caseModel> cases {get;set;}
-        public List<skedModels.offer> offers {get;set;}
         public List<skedModels.holiday> holidays {get;set;}
         public List<skedModels.region> regions {get;set;}
         public List<skedModels.tag> tags {get;set;}
@@ -225,7 +223,6 @@ global class skedPacController {
         public string regionId {get;set;}
         public string patientId {get;set;}
         public string caseId {get;set;}
-        public string offerId {get;set;}
         public string startDate {get;set;}
         public string endDate {get;set;}
         public List<string> objectTypes {get;set;}
@@ -248,35 +245,7 @@ global class skedPacController {
     global static skedRemoteResultModel getExceptionLogs(clientAvailabilityQueryModel model) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         try {
-            result.data = skedExceptionLogService.getOfferExceptionLogs(model.caseId, model.offerId);
-        }
-        catch (Exception ex) {
-            result.getError(ex);
-        }
-        return result;
-    }
-
-    @remoteAction
-    global static skedRemoteResultModel createOffer(skedModels.offer model) {
-        skedRemoteResultModel result = new skedRemoteResultModel();
-        try {
-            skedOfferService service = new skedOfferService();
-            sked_Offer__c skedOffer = service.saveRecord(model);
-            result.data = skedAutoMapper.instance.mapTo(skedOffer, skedModels.offer.class);
-        }
-        catch (Exception ex) {
-            result.getError(ex);
-        }
-        return result;
-    }
-
-    @remoteAction
-    global static skedRemoteResultModel stopOffer(skedOfferService.stopOfferModel model) {
-        skedRemoteResultModel result = new skedRemoteResultModel();
-        try {
-            skedOfferService service = new skedOfferService();
-            sked_Offer__c skedOffer = service.stopOffer(model);
-            result.data = skedAutoMapper.instance.mapTo(skedOffer, skedModels.offer.class);
+            result.data = skedExceptionLogService.getCaseExceptionLogs(model.caseId);
         }
         catch (Exception ex) {
             result.getError(ex);
@@ -333,7 +302,7 @@ global class skedPacController {
         SavePoint sp = Database.setSavepoint();
         try {
             skedJobService.jobQueryModel jobQueryModel = new skedJobService.jobQueryModel();
-            jobQueryModel.offerId = eventModel.offerId;
+            jobQueryModel.caseId = eventModel.caseId;
             List<sked__Job__c> skedJobs = skedJobService.getJobs(jobQueryModel);
             sked__Job__c firstSkedJob = skedJobs.get(0);
             eventModel.timezoneSidId = firstSkedJob.sked__Timezone__c;

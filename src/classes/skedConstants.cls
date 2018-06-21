@@ -42,13 +42,6 @@ public class skedConstants {
 
     public static final string JOB_TYPE_INITIAL_EVALUATION = 'Initial Evaluation';
     public static final string JOB_TYPE_TREATMENT = 'Treatment';
-    
-    public static final string OFFER_STATUS_NEW = 'New';
-    public static final string OFFER_STATUS_SENT_TO_CUSTOMER = 'Sent to Client';
-    public static final string OFFER_STATUS_ACCEPTED = 'Accepted';
-    public static final string OFFER_STATUS_DECLINED = 'Declined';
-    public static final string OFFER_STATUS_EXPIRED = 'Expired';
-    public static final string OFFER_STATUS_STOPPED = 'Stopped';
 
     public static final string RESOURCE_TYPE_PERSON = 'Person';
     public static final string RESOURCE_TYPE_ASSET = 'Asset';

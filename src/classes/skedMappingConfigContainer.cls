@@ -20,7 +20,6 @@ public class skedMappingConfigContainer {
     public static final string SKED_CLIENT_AVAILABILITY_OBJECT = 'sked_Client_Availability__c';    
     public static final string SKED_JOB_OBJECT = 'sked__Job__c';
     public static final string SKED_JOB_ALLOCATION_OBJECT = 'sked__Job_Allocation__c';
-    public static final string SKED_OFFER_OBJECT = 'sked_Offer__c';
     public static final string SKED_RESOURCE_OBJECT = 'sked__Resource__c';
     public static final string SKED_SHIFT_OBJECT = 'sked__Shift__c';
     public static final string CONTACT_OBJECT = 'Contact';
@@ -45,9 +44,6 @@ public class skedMappingConfigContainer {
             else if (sObjectType == SKED_JOB_ALLOCATION_OBJECT) {
                 mappingConfig = getJobAllocationMappingConfig();
             }
-            else if (sObjectType == SKED_OFFER_OBJECT) {
-                mappingConfig = getOfferMappingConfig();
-            } 
             else if (sObjectType == SKED_RESOURCE_OBJECT) {
                 mappingConfig = getResourceMappingConfig();
             } 
@@ -134,7 +130,6 @@ public class skedMappingConfigContainer {
         mappingConfig.addFieldConfig('sked__GeoLocation__c', 'address', 'addressLocation');
         mappingConfig.addFieldConfig('sked_Case__c', 'caseId', 'direct');
         mappingConfig.addFieldConfig('sked_Is_Care_Team__c', 'isCareTeam', 'direct');
-        mappingConfig.addFieldConfig('sked_Offer__c', 'offerId', 'direct');
         mappingConfig.addFieldConfig('job', 'objectType', 'value');
         return mappingConfig;
     }
@@ -149,16 +144,6 @@ public class skedMappingConfigContainer {
         mappingConfig.addFieldConfig('sked__Job__r.sked__Address__c', 'address', 'fullAddress');
         mappingConfig.addFieldConfig('sked__Job__r.sked__GeoLocation__c', 'address', 'addressLocation');
         mappingConfig.addFieldConfig('jobAllocation', 'objectType', 'value');
-        return mappingConfig;
-    }
-
-    private mappingConfigModel getOfferMappingConfig() {
-        mappingConfigModel mappingConfig = new mappingConfigModel();
-        mappingConfig.addFieldConfig('Id', 'id', 'direct');
-        mappingConfig.addFieldConfig('Name', 'name', 'direct');
-        mappingConfig.addFieldConfig('sked_Case__c', 'caseId', 'direct');
-        mappingConfig.addFieldConfig('sked_Description__c', 'description', 'direct');
-        mappingConfig.addFieldConfig('sked_Status__c', 'status', 'direct');
         return mappingConfig;
     }
 

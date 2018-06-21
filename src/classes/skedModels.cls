@@ -88,7 +88,6 @@ global class skedModels {
         public boolean isCareTeam {get;set;}
         public string jobStatus {get;set;}
         public string notes {get;set;}
-        public string offerId {get;set;}
         public string rescheduleJobId {get;set;}
         public string regionId {get;set;}
         public string patientId {get;set;}
@@ -294,12 +293,6 @@ global class skedModels {
     }
     
     /*Skedulo custom models*/
-    global virtual class offer extends modelBase {
-        public string caseId {get;set;}
-        public string status {get;set;}
-        public string description {get;set;}
-    }
-
     global virtual class patient extends modelBase {
     }
     

@@ -1,21 +1,14 @@
 global class skedExceptionLogService {
 
-	public static List<skedModels.exceptionLog> getOfferExceptionLogs(string caseId, string offerId) {
+	public static List<skedModels.exceptionLog> getCaseExceptionLogs(string caseId) {
 		List<skedModels.exceptionLog> excetionLogs = new List<skedModels.exceptionLog>();
 
 		Case caseItem = [SELECT Id, CaseNumber, AccountId, Account.Name
 						 FROM Case
 						 WHERE Id = :caseId];
-		sked_Offer__c skedOffer = [SELECT Id, sked_Status__c 
-								   FROM sked_Offer__c
-								   WHERE Id = :offerId];
-		Set<string> offerActiveStatuses = new Set<string>();
-		offerActiveStatuses.add(skedConstants.OFFER_STATUS_NEW);
-		offerActiveStatuses.add(skedConstants.OFFER_STATUS_SENT_TO_CUSTOMER);
-		offerActiveStatuses.add(skedConstants.OFFER_STATUS_ACCEPTED);
 
 		List<sked__Job__c> caseSkedJobs = [SELECT Id, Name, sked__Start__c, sked__Finish__c, sked__Duration__c,
-										   sked__Type__c, sked__Timezone__c, sked_Offer__c, sked__Job_Allocation_Count__c,
+										   sked__Type__c, sked__Timezone__c, sked__Job_Allocation_Count__c,
 										   sked__Address__c, sked__GeoLocation__c, sked__Location__c
 										   FROM sked__Job__c
 										   WHERE sked_Case__c = :caseId
@@ -34,26 +27,23 @@ global class skedExceptionLogService {
 	        List<sked_Client_Availability__c> skedClientAvailabilities = skedClientAvailabilityService.getClientAvailability(caseItem.AccountId, startTime, endTime);*/
 
 	        for (sked__Job__c skedJob : caseSkedJobs) {
-	        	if (offerActiveStatuses.contains(skedOffer.sked_Status__c) && skedJob.sked_Offer__c == offerId) {
-	        		if (skedOffer.sked_Status__c != skedConstants.OFFER_STATUS_NEW && skedJob.sked__Job_Allocation_Count__c == 0) {
-		        		skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_NO_ALLOCATION, caseItem, skedJob);
-		        		excetionLogs.add(exceptionLog);
-		        	}
-	        		if (skedJob.sked__Type__c == skedConstants.JOB_TYPE_TREATMENT) {
-		        		if (skedJob.sked__Location__c == null) {
-		        			skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_MISSING_LOCATION, caseItem, skedJob);
-		        			excetionLogs.add(exceptionLog);
-		        		}
-		        	}
+        		if (skedJob.sked__Job_Allocation_Count__c == 0) {
+	        		skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_NO_ALLOCATION, caseItem, skedJob);
+	        		excetionLogs.add(exceptionLog);
+	        	}
+        		if (skedJob.sked__Type__c == skedConstants.JOB_TYPE_TREATMENT) {
+	        		if (skedJob.sked__Location__c == null) {
+	        			skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_MISSING_LOCATION, caseItem, skedJob);
+	        			excetionLogs.add(exceptionLog);
+	        		}
 	        	}
 	        }
 	    }
 
         List<sked_Exception_Log__c> skedExceptionLogs = [SELECT Id, sked_Exception_Code__c, sked_Job__c, sked_Resource__c
 														 FROM sked_Exception_Log__c
-														 WHERE sked_Job__r.sked_Offer__c = :offerId
+														 WHERE sked_Job__r.sked_Case__c = :caseId
 														 AND sked_Status__c != :skedConstants.EXCEPTION_LOG_STATUS_CLOSED];
-        system.debug('#skedExceptionLogs#' + skedExceptionLogs);
         if (!skedExceptionLogs.isEmpty()) {
 	        Set<Id> jobIds = new Set<Id>();
 	        Set<Id> resourceIds = new Set<Id>();
