@@ -1,0 +1,1066 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"OFFER",
+				"OFFER_STATUS_NEW"
+			],
+			[
+				"JOB",
+				"JOB_STATUS_CANCELLED"
+			],
+			[
+				"sked__Job_Allocati",
+				"sked__Job_Allocation_Count__c"
+			],
+			[
+				"dele",
+				"deletedRecord"
+			],
+			[
+				"skedClient",
+				"skedClientAvailability"
+			],
+			[
+				"model",
+				"modelbase"
+			],
+			[
+				"trav",
+				"travelDistanceFrom"
+			],
+			[
+				"travel",
+				"travelTimeFrom"
+			],
+			[
+				"tr",
+				"trackingEventTypes"
+			],
+			[
+				"sked_Exception",
+				"sked_Exception_Log__c"
+			],
+			[
+				"skedulo",
+				"skeduloAPIToken"
+			],
+			[
+				"getId",
+				"getIdsFromList"
+			],
+			[
+				"sked__Job",
+				"sked__Job_Allocation__c"
+			],
+			[
+				"can",
+				"cancelJob"
+			],
+			[
+				"start",
+				"startDate"
+			],
+			[
+				"record",
+				"recordStart"
+			],
+			[
+				"skedJob",
+				"skedJobService"
+			],
+			[
+				"sked__Job_Allocation",
+				"sked__Job_Allocation__c"
+			],
+			[
+				"JOB_ALL",
+				"JOB_ALLOCATION_STATUS_DELETED"
+			],
+			[
+				"sked__JobAll",
+				"sked__Job_Allocations__r"
+			],
+			[
+				"sked__job",
+				"sked__Job_Allocations__r"
+			],
+			[
+				"JOB_ALLO",
+				"JOB_ALLOCATION_STATUS_PENDING_DISPATCH"
+			],
+			[
+				"curr",
+				"currentSkedJob"
+			],
+			[
+				"sked__Geo",
+				"sked__GeoLocation__c"
+			],
+			[
+				"sked__GeoL",
+				"sked__GeoLocation__c"
+			],
+			[
+				"Em",
+				"Employment_Type__c"
+			],
+			[
+				"Tr",
+				"Training_Contact__r"
+			],
+			[
+				"Traini",
+				"Training_Event__c"
+			],
+			[
+				"Train",
+				"Training_Event__c"
+			],
+			[
+				"sked__Job_A",
+				"sked__Job_Allocation__c"
+			],
+			[
+				"Training",
+				"Training_Events__c"
+			],
+			[
+				"JOB_ALLOCATION_STATUS_D",
+				"JOB_ALLOCATION_STATUS_DISPATCHED"
+			],
+			[
+				"P",
+				"SmallPhotoUrl"
+			],
+			[
+				"Grid",
+				"Grid_Setting_Scheduled_Hours__c"
+			],
+			[
+				"grid_set",
+				"Grid_Setting_Employment_Types__c"
+			],
+			[
+				"em",
+				"employmentTypes"
+			],
+			[
+				"inte",
+				"interval"
+			],
+			[
+				"Grid_",
+				"Grid_Setting_Subconstractor__c"
+			],
+			[
+				"Gri_",
+				"Grid_Setting_Show_24_Hours__c"
+			],
+			[
+				"grdi_",
+				"Grid_Setting_Interval__c"
+			],
+			[
+				"Grid_Set",
+				"Grid_Setting_Radius__c"
+			],
+			[
+				"gridSett",
+				"gridSettingModel"
+			],
+			[
+				"query",
+				"queryModel"
+			],
+			[
+				"EMPLOYMENT",
+				"RESOURCE_EMPLOYMENT_TYPE_SUBCONTRACTOR"
+			],
+			[
+				"Event",
+				"Event_Id__c"
+			],
+			[
+				"sked__jo",
+				"sked__Job_Allocation__c"
+			],
+			[
+				"sked__Ge",
+				"sked__GeoLocation__Longitude__s"
+			],
+			[
+				"Id",
+				"Production_Id__c"
+			],
+			[
+				"DATE",
+				"DATE_ISO_FORMAT"
+			],
+			[
+				"s",
+				"sked__Weekday__c"
+			],
+			[
+				"sked",
+				"sked__Is_Available__c"
+			],
+			[
+				"sked__Jo",
+				"sked__Job_Status__c"
+			],
+			[
+				"Num",
+				"Number_of_Students__c"
+			],
+			[
+				"sked_",
+				"sked__Address__c"
+			],
+			[
+				"sked__JobA",
+				"sked__Job_Allocation__c"
+			],
+			[
+				"pa",
+				"PUBLIC pattern\tString"
+			],
+			[
+				"Course",
+				"Course_Class_Type__c\t[Sobject Name]"
+			],
+			[
+				"num",
+				"PUBLIC numberOfStudents\tInteger"
+			],
+			[
+				"Number",
+				"Number_of_Students__c"
+			],
+			[
+				"noOf",
+				"PUBLIC noOfQualifiedResources\tInteger"
+			],
+			[
+				"conf",
+				"conflictDetails"
+			],
+			[
+				"Numb",
+				"Number_of_Evaluators__c"
+			],
+			[
+				"RESO",
+				"PUBLIC RESOURCE_EMPLOYMENT_TYPE_SUBCONTRACTOR\tString"
+			],
+			[
+				"sked__C",
+				"sked__Can_Be_Declined__c"
+			],
+			[
+				"sked__J",
+				"sked__Job_Allocations__r"
+			],
+			[
+				"numberOf",
+				"numberOfStudents"
+			],
+			[
+				"JOB_STATUS_",
+				"JOB_STATUS_EN_ROUTE"
+			],
+			[
+				"JOB_",
+				"JOB_STATUS_IN_PROGRESS"
+			],
+			[
+				"skedRes",
+				"skedResource"
+			],
+			[
+				"first",
+				"firstWeekStartDt"
+			],
+			[
+				"nm",
+				"PUBLIC numberOfInstructors\tInteger"
+			],
+			[
+				"cour",
+				"PUBLIC courseCatalogId\tString"
+			],
+			[
+				"Cour",
+				"Course_Class_Days__c"
+			],
+			[
+				"nULL",
+				"NULL"
+			],
+			[
+				"current",
+				"currentClassDay"
+			],
+			[
+				"JOB_TYPE_NURSE_ASSISTANT_TR",
+				"PUBLIC JOB_TYPE_NURSE_ASSISTANT_TRAINING\tString"
+			],
+			[
+				"total",
+				"totalDays"
+			],
+			[
+				"cou",
+				"PUBLIC courseTemplate(Course_Template__c skeCourseTemplate)"
+			],
+			[
+				"get",
+				"PUBLIC getCourseTemplates() \tList"
+			],
+			[
+				"fa",
+				"facility"
+			],
+			[
+				"LO",
+				"PUBLIC LOCATION_TYPE_NURSE_ASSISTANT_TRAINING\tString"
+			],
+			[
+				"Job",
+				"Job_Month__c"
+			],
+			[
+				"COMMUNITY_COPY_OUT",
+				"PUBLIC COMMUNITY_COPY_OUT_OF_MONTH\tString"
+			],
+			[
+				"COMMUNITY_COPY_",
+				"PUBLIC COMMUNITY_COPY_OUT_OF_MONTH\tString"
+			],
+			[
+				"COP",
+				"PUBLIC COMMUNITY_COPY_OUT_OF_MONTH\tString"
+			],
+			[
+				"validate",
+				"validateQueuedJobsInMonth"
+			],
+			[
+				"J",
+				"Job_Month__c"
+			],
+			[
+				"RE",
+				"PUBLIC RESOURCE_CATEGORY_INSTRUCTOR\tString"
+			],
+			[
+				"skedOff",
+				"skedOfferingsToUpsert"
+			],
+			[
+				"is",
+				"PUBLIC isDeleted\tBoolean"
+			],
+			[
+				"F",
+				"Frequency__c"
+			],
+			[
+				"JOB_STAT",
+				"JOB_STATUS_CANCELLED"
+			],
+			[
+				"conta",
+				"PUBLIC contains(ANY element) \tBoolean"
+			],
+			[
+				"Number_",
+				"Number_of_Instructors__c"
+			],
+			[
+				"sked__GeoLo",
+				"sked__GeoLocation__Latitude__s"
+			],
+			[
+				"sour",
+				"sourceJob"
+			],
+			[
+				"to",
+				"PUBLIC toStartOfMonth() \tDate"
+			],
+			[
+				"g",
+				"PUBLIC getDateFromIsoString(String dateIsoString) \tDate"
+			],
+			[
+				"numberO",
+				"numberOfInstructors"
+			],
+			[
+				"sked__Job_",
+				"sked__Job_Status__c"
+			],
+			[
+				"time",
+				"PUBLIC timezoneSidId\tString"
+			],
+			[
+				"JOB_STA",
+				"PUBLIC JOB_STATUS_DISPATCHED\tString"
+			],
+			[
+				"con",
+				"PUBLIC contains(ANY element) \tBoolean"
+			],
+			[
+				"JO",
+				"JOB_ALLOCATION_STATUS_DELETED"
+			],
+			[
+				"add",
+				"PUBLIC addMonths(Datetime input, Integer months, String timezoneSidId) \tDatetime"
+			],
+			[
+				"Trainin",
+				"Training_Events__c"
+			],
+			[
+				"skedT",
+				"skedTrainingEvent"
+			],
+			[
+				"JOB_A",
+				"PUBLIC JOB_ALLOCATION_STATUS_PENDING_DISPATCH\tString"
+			],
+			[
+				"resource",
+				"resourceId"
+			],
+			[
+				"depende",
+				"dependentJob"
+			],
+			[
+				"ACCOUNT",
+				"PUBLIC ACCCOUNT_SCORE_WHITELIST\tString"
+			],
+			[
+				"TIME",
+				"TIME_Status__c \tPicklist"
+			],
+			[
+				"clientP",
+				"clientProfileId"
+			],
+			[
+				"S",
+				"StandardController"
+			],
+			[
+				"TIME_Clie",
+				"TIME_Client_Profile__c"
+			],
+			[
+				"TIME_Cal",
+				"TIME_Cancellation_Reason_Code__c"
+			],
+			[
+				"JOB_S",
+				"PUBLIC JOB_STATUS_CANCELLED\tString"
+			],
+			[
+				"client",
+				"clientProfile"
+			],
+			[
+				"Time",
+				"TIME_skedConstants"
+			],
+			[
+				"recu",
+				"PUBLIC recurPatternStr\tString"
+			],
+			[
+				"outpu",
+				"apex:outputPanel"
+			],
+			[
+				"Date",
+				"Date_Declined__c \tDateTime"
+			],
+			[
+				"contain",
+				"PUBLIC containsAll(LIST elements) \tBoolean"
+			],
+			[
+				"TIME_sked",
+				"TIME_skedConstants\t[Custom Apex Class]"
+			],
+			[
+				"TIME_",
+				"TIME_skedModels\t[Custom Apex Class]"
+			],
+			[
+				"slds-scroll",
+				"slds-scrollable--y"
+			],
+			[
+				"userTim",
+				"userTimezoneSidId"
+			],
+			[
+				"sked__Pr",
+				"sked__Primary_Region__r"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/classes/skedExceptionLogService.cls",
+			"settings":
+			{
+				"buffer_size": 11403,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/skedPacController.cls",
+			"settings":
+			{
+				"buffer_size": 20534,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 119.0,
+		"last_filter": "deploy",
+		"selected_items":
+		[
+			[
+				"deploy",
+				"MavensMate: Deploy Resource Bundle..."
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 600.0
+	},
+	"console":
+	{
+		"height": 186.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/triggers"
+	],
+	"file_history":
+	[
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailatorBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedBookingGridController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedExceptionLogService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRacController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedModels.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedClientAvailabilityService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedPacController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedOfferService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedConstants.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedMappingConfigContainer.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedEventServiceBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailabilityService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedActivityService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRecurringFactory.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCommonService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedUtils.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRmcController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedGridBuilder.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedResourceAvailabilityBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRacResourceAvailability.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedResourceAvailability.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAutoMapper.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedBaseModels.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSetting.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedObjectMapper.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTrackingResourceLocationBatch.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailator.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSkeduloApiManager.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedPAC.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAllocationService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/triggers/skedJobAllocationTrigger.trigger",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobAllocationHandler.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSkeduloApiData.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTestTrackingLocationController.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/objects/sked__Job__c.object",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/objects/Skedulo_SMS__c.object",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMSServices.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMSHandler.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMS.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedJobAllocationTriggerHandler.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedConstants.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobHandler.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCalloutActionBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedNotifyDispatchedJobsBatch.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCalloutResultBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailatorParams.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedDateTimeUtils.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedDataServiceBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedRMC.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedRAC.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResourceReportController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedDataSetup.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedConstants.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/components/skedResourceReportMainModule.component",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/pages/skedResourceReport.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/components/skedResourceReportTableTemplate.component",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/components/skedResourceReportGroupTemplate.component",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/components/skedResourceReportExportExcelModule.component",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedJobService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCommunitySchedulingController_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCepSchedulingController_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCepSchedulingController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCommunitySchedulingController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedFullServiceBookingGridController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedAvailatorBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResourceAvailabilityBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedSkeduloApiManager.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedUtils.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedDateTimeUtils.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedNatSchedulingController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedScheduleAllocationController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCepSchedulingController.cls-meta.xml",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedAvailatorParams.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedModels.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedBaseModels.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedJobHandler.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedFullServiceController_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGoogleServiceApi.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGoogleApi_Mock.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedJobTrigger_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedScheduleDispatchJobs.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/arc-ui/src/app/full-service-booking-grid.tpl.html",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedTestDispathcController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedEmailUtils.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedNotifyDispatchedJobsBatch.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGeoservicesData.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGoogleTravelTimeService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGoogleData.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedSkeduloApiManager_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResourceReport_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCalloutActionBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedJobService_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedJobAllocationHandler.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedJobAllocationTrigger_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCalloutException.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedSkeduloApiData.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedCalloutResultBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedEventFactory.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedAvailabilityHandler.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedRemoteResultModel.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/pages/skedFullServiceBookingGrid.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/arc-ui/Gruntfile.js",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedOutlookData.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedOutlookApiManager.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedSyncActionFactory.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedAvailator.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedARCUtils.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/arc-ui/full-service-booking-grid.html",
+		"/C/Users/QuanVuong/Documents/SublimeText/arc-ui/src/app/app.js",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedOutlookSyncBatch.cls",
+		"/C/Users/QuanVuong/Desktop/skedOutlook365/skedOutlookCalendarCallouts.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedOutlookAuthController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedActivityHandler.cls",
+		"/C/Users/QuanVuong/Desktop/skedOutlook365/OutlookCalendar.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedOutlookCalendarCallouts.cls",
+		"/C/Users/QuanVuong/Desktop/skedOutlook365/skedOutlookAuthController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedTravelTimeService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedTravelTimeServiceBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResourceAvailability.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/triggers/skedActivityTrigger.trigger",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/pages/skedScheduleAllocation.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGeoservicesApi.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedFullServiceBookingGridController.cls-meta.xml",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedFillResourceGeoLocationBatch.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResAvailTemplateController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedNatSchedulingController_Test.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedLocationHandler.cls"
+	],
+	"find":
+	{
+		"height": 60.0
+	},
+	"find_in_files":
+	{
+		"height": 156.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"endDate",
+			"skedModels.patient",
+			"clientAvailabilityQueryModel",
+			"sked_Account__c",
+			"upsert",
+			"availabilitySaveModel",
+			"skedBaseModels",
+			"skedBaseModels.",
+			"tempId",
+			"getActiveResourcesByTags",
+			"patientId",
+			"regionId",
+			"populateAppointmentLocation",
+			"mapToSObject",
+			"clientAvailabilitySaveModel",
+			"canSave",
+			"racSetting",
+			"CUSTOM_FIELDS_EXTENSION",
+			"sObject ",
+			"setskedzoneSidId",
+			"sked__skedzone__c",
+			"sked_Related_Unavailability__r",
+			"Datesked",
+			"endsked",
+			"startsked",
+			"sked_skedConstants",
+			"TIME",
+			"sked_skedConstants",
+			"TIME_sked",
+			"TIME_",
+			"populateAppointmentLocation",
+			"firstJobStart",
+			"populateAppointmentLocation",
+			"travelDistanceFrom",
+			"getAccountContacts",
+			"getActiveCases",
+			"getActiveCase",
+			"getCase",
+			"loadResourceEvents",
+			"Skedulo_API",
+			"allocation",
+			"sked__Job_Allocation__c",
+			"allocations",
+			"sked__Job_Allocation__c",
+			"cancelJob",
+			"now",
+			"DATE_FORMAT",
+			"FROM sked__Job",
+			"this.",
+			"loadResourceEvents",
+			"2359",
+			"inputDates",
+			"convertTimeNumberToMinutes",
+			"validateConflicts",
+			"patientId",
+			"FROM sked__Job__c",
+			"sked__Recurring_Schedule__c",
+			"timezone =",
+			"insertJobTags",
+			"sked_Is_Excluded__c",
+			"sked_IsExcluded__c",
+			";\n",
+			"skedJobService.cancel",
+			"UserInfo",
+			"timezoneSidId =",
+			"FROM sked__JobTags__r",
+			"serviceLocationId",
+			"preferedStart",
+			"sked_Prefered_Start__c",
+			"getActiveResourcesByTags",
+			"getAc",
+			"allocation.job",
+			"allocation.resource",
+			"== null ||",
+			"initalizeJob",
+			"system.debug",
+			"jobLocation",
+			"initializeClientAvailability",
+			"duration",
+			"colorSetting",
+			"system.debug",
+			"startTimeDt",
+			"skedUtils.DATE_FORMAT",
+			"getTravelTime",
+			"job.tagIds",
+			"Set<",
+			"getTag",
+			"getTags",
+			"gridSettingModel",
+			"public virtual class",
+			"getRegions",
+			"tagIds",
+			"Set<Str",
+			"jobDuration",
+			"jobAddress",
+			"skedAvailator",
+			"SelectOption",
+			"SELECTOption",
+			"rosterFilter",
+			"getJobs",
+			"cancelJobModel",
+			"list",
+			"getRecurringJobs",
+			"validateConflictResourceShift",
+			"from",
+			"where",
+			"Select",
+			"catch(",
+			"try{",
+			"IGNORED_JOB_STATUSES",
+			"adminSetting",
+			"getPickListValues",
+			"getPicklistValues",
+			"RM_Allow_Create_Shift",
+			"boolean",
+			"sked_EHR_Patient__c",
+			"pacSettings",
+			"patient",
+			"clientAvailabilityQueryModel",
+			"'objectType', ",
+			"CLIENT_AVAILABILITY_OBJECT",
+			"getActiveResourcesByTags"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"skedModels",
+			"",
+			"setTimezoneSidId",
+			"sked__Timezone__c",
+			"sked_Availability__r",
+			"DateTime",
+			"endTime",
+			"startTime",
+			"skedConstants",
+			"sked",
+			"skedConstants",
+			"sked_",
+			"sked_API",
+			"job",
+			"sked__Job__c",
+			"jobs",
+			"DATE_ISO_FORMAT",
+			"",
+			"skedUtils.getActiveResourcesByTags",
+			"mapToSObject",
+			"displaySetting",
+			"skedUtils.getTravelTime",
+			"global virtual class",
+			"selectOption",
+			"SelectOption",
+			"List",
+			"FROM",
+			"WHERE",
+			"SELECT",
+			"catch (",
+			"try {",
+			"getPickListOptions",
+			"sked_Account__c",
+			"gridSettings",
+			"",
+			"SKED_CLIENT_AVAILABILITY_OBJECT"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/classes/skedExceptionLogService.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4414,
+								4414
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1254.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/classes/skedPacController.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20534,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16872,
+								16872
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1892.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 43.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.MavensMate-OutputPanel":
+	{
+		"height": 248.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "HITDemoOrg.sublime-project",
+	"replace":
+	{
+		"height": 108.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 588.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"hasJob",
+				"handleSaveJobSuccess"
+			]
+		],
+		"width": 1026.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 462.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

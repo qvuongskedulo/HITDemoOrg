@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>sked_Enable_Object_Sync__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Enable Object Sync</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_Enable_Recurring_Job__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Enable Recurring Job</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_Global_JobURL__c</fullName>
+        <externalId>false</externalId>
+        <label>Global Job URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Auto_Approve_Availability__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Auto Approve Availability</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Calendar_End__c</fullName>
+        <defaultValue>1900</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Calendar End</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Calendar_Start__c</fullName>
+        <defaultValue>700</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Calendar Start</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Calendar_Step__c</fullName>
+        <defaultValue>30</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Calendar Step</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Date_Format__c</fullName>
+        <defaultValue>&apos;MM/dd/yyyy&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Date Format</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Datepicker_Format__c</fullName>
+        <defaultValue>&apos;D, mm/dd/yy&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Datepicker Format</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Enable_Activity__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Enable Activity</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Enable_Availability_Template__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Enable Availability Template</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_First_Day__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC First Day</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_No_of_Recur_Weeks__c</fullName>
+        <defaultValue>52</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC No of Recur Weeks</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_Respect_Resource_Timezone__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Respect Resource Timezone</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_RAC_View_Period__c</fullName>
+        <defaultValue>2</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC View Period</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_RM_Allow_To_Complete_Job__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>RM Allow To Complete Job</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sked_RM_LocationOrSiteFilter__c</fullName>
+        <externalId>false</externalId>
+        <label>RM Location or Site Filter</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_Skedulo_API_Token__c</fullName>
+        <externalId>false</externalId>
+        <label>Skedulo API Token</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Skedulo Admin Setting</label>
+    <visibility>Protected</visibility>
+</CustomObject>

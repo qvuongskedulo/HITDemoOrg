@@ -1,0 +1,5 @@
+<apex:page standardController="sked_Support_Plan__c"  
+     extensions="skedSupportPlanDeepCloneController"
+     action="{!cloneWithItems}">
+     <apex:pageMessages />
+</apex:page>

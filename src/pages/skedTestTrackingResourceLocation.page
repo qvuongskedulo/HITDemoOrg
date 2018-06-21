@@ -1,0 +1,14 @@
+<apex:page controller="skedTestTrackingLocationController" doctype="html-5.0">
+    <apex:form >
+    	<apex:pageBlock title="Tracking Resource Location" mode="edit">
+        	<apex:pageBlockButtons >
+                <apex:commandButton action="{!Cmd_Execute}" value="Execute" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!Model.sked__Resource__c}"></apex:inputField>
+                <apex:input type="date" label="Selected Date" value="{!selectedDate}"></apex:input>
+                <apex:outputText value="Click Execute button to trigger Tracking Resource Location batch." />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

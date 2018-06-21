@@ -1,0 +1,9 @@
+<aura:component controller="sked_CarePlan_SupportNotesContoller" implements="flexipage:availableForRecordHome,lightning:isUrlAddressable" access="global">
+    <aura:attribute name="planNotes" type="sked_Support_Plan_Comment__c[]"/>
+    <aura:handler name="init" action="{!c.initLoadPlanNote}" value="{!this}"/>
+    <!--Implement Note List here-->
+     <aura:iteration items="{!v.planNotes}" var="pNote">
+         <p>{!pNote.sked_Comment__c }</p>
+    </aura:iteration>
+
+</aura:component>

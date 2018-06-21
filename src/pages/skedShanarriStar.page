@@ -1,0 +1,39 @@
+<apex:page StandardController="sked_Support_Plan__c" extensions="skedShanarriStar">
+    <style>
+        #vfext4-ext-gen1026 {
+        width:800px !important;
+        }
+    </style>  
+    <apex:outputtext value="  " style="font-family:Calibri; font-size: 20px;"/><br />
+    <br /><br />
+    
+    <apex:chart name="myChart" height="250" width="400" legend="true" data="{!data}">
+        <!--<apex:legend position="top" />-->
+        <div align="center">
+            <br/>
+            <br/>
+            <apex:axis type="Radial" position="radial"/>
+            <apex:radarSeries title="Shanarri Chart" xField="field" yField="value" tips="true" markerType="cross" strokeWidth="2" strokeColor="#f33" opacity="0.4"/>
+        </div>
+    </apex:chart>
+    
+    <apex:includeScript value="//code.jquery.com/jquery-1.11.0.min.js"/>
+    <script>
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function() {
+        var updateSvgCss = function() {
+            var svg = j$('svg');
+            if (svg.length > 0) {
+                svg.css('padding', '20px');
+                svg.css('height', '640px');
+                svg.css('width', '740px');
+            } else {
+                // svg element appears to be dyamically inserted so poll for it
+                setTimeout(updateSvgCss, 10);
+            }
+        };
+        updateSvgCss();
+    });
+    </script>
+    
+</apex:page>

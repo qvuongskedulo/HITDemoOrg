@@ -1,0 +1,20 @@
+{
+    "projectName": "HITDemoOrg",
+    "username": "expertservices@skedulo.com.skedhealth1",
+    "id": "391a9aa0-54ec-11e8-afd5-1998d0ca8db3",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://skedhealth1.my.salesforce.com",
+    "workspace": "C:\\Users\\QuanVuong\\Documents\\SublimeText",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "AuraDefinitionBundle",
+        "CustomMetadata",
+        "CustomObject",
+        "StaticResource"
+    ]
+}
