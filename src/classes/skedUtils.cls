@@ -217,5 +217,48 @@ public class skedUtils {
         travelTime = ((dist / skedSetting.instance.Admin.velocity) * 60).intValue();
         return travelTime;
     }
+
+    public static Set<string> getFieldNameFromTemplate(string template) {
+        Set<string> filedsWithHierarchy = new Set<string>();
+        string extractedFields = extractTemplateToFieldString(template);
+        for (string item : extractedFields.split(',')) {
+            filedsWithHierarchy.add(item);
+        }
+
+        return filedsWithHierarchy;
+    }
+
+    public static object getSourceFieldValue(sObject record, string apiFieldName) {
+        object outputValue;
+        string fullApiFieldNamePath = apiFieldName;
+        sObject parentObject = record;
+        integer parentIndex = fullApiFieldNamePath.indexOf('.');
+
+        while (parentIndex != -1) {
+            if (parentObject == null) {
+                return null;
+            }
+            string parentObjectName = fullApiFieldNamePath.subString(0, fullApiFieldNamePath.indexOf('.'));
+            parentObject = parentObject.getSObject(parentObjectName);
+            
+            fullApiFieldNamePath = fullApiFieldNamePath.subString(fullApiFieldNamePath.indexOf('.') + 1, fullApiFieldNamePath.length());
+            parentIndex = fullApiFieldNamePath.indexOf('.');
+        }
+
+        outputValue = parentObject.get(fullApiFieldNamePath);
+        return outputValue;
+    }
+
+
+    /************************************************ Private methods ***********************************************/
+    private static string extractTemplateToFieldString(string template) {
+        string field = template.substringBetween('{{','}}');
+        if (!String.isBlank(field)) {
+            return field + ',' + extractTemplateToFieldString(template.replace('{{' + field + '}}', ''));
+        }
+        else {
+            return '';
+        }
+    }
     
 }

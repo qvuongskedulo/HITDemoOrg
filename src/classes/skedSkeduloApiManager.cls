@@ -1,6 +1,7 @@
 global virtual class skedSkeduloApiManager {
     
     public static final string DISPATCH_ENDPOINT = 'https://app.skedulo.com/dispatch';
+    public static final string DISTANCE_MATRIX_ENDPOINT = 'callout:Skedulo_API/geoservices/distanceMatrix';
     public static final string LOCATION_HISTORY_ENDPOINT = 'https://app.skedulo.com/location/history';
     
     public static void dispatchJobs(Set<Id> jobIds) {
@@ -14,7 +15,8 @@ global virtual class skedSkeduloApiManager {
         for (sked__Job__c skedJob : skedJobs) {
             skedSkeduloApiData.dispatchJobResult result = dispatchJob(skedJob.Id);
             if (result.success == false) {
-                skedJob.sked_API_Error_Message__c += 'Error Code: ';
+                skedJob.sked_API_Error__c = TRUE;
+                skedJob.sked_API_Error_Message__c = 'Error Code: ';
                 skedJob.sked_API_Error_Message__c += result.message;
                 skedJob.sked_API_Error_Message__c += '\n';
             }
@@ -49,13 +51,25 @@ global virtual class skedSkeduloApiManager {
     }
 
     public static void dispatchJobAllocations(Set<Id> jobAllocationIds) {
-        List<sked__Job_Allocation__c> skedAllocations = [SELECT Id, sked__Job__c, sked__Resource__c, 
-                                                         sked__Status__c
+        List<sked__Job_Allocation__c> skedAllocations = [SELECT Id, sked__Job__c, sked__Resource__c, sked__Status__c,
+                                                         sked__Job__r.sked__Start__c, sked__Job__r.sked__Recurring_Schedule__c
                                                          FROM sked__Job_Allocation__c
-                                                         WHERE Id IN :jobAllocationIds];
+                                                         WHERE Id IN :jobAllocationIds
+                                                         ORDER BY sked__Job__r.sked__Start__c];
         Set<Id> jobIdsToUpdateStatus = new Set<Id>();
+        Set<string> trackingResourceScheduleList = new Set<string>();
         Map<Id, sked__Job__c> mapErrorJob = new Map<Id, sked__Job__c>();
         for (sked__Job_Allocation__c skedAllocation : skedAllocations) {
+            if (skedAllocation.sked__Job__r.sked__Recurring_Schedule__c != NULL) {
+                string key = skedAllocation.sked__Resource__c + ':' + skedAllocation.sked__Job__r.sked__Recurring_Schedule__c;
+                if (trackingResourceScheduleList.contains(key)) {
+                    continue;
+                }
+                else {
+                    trackingResourceScheduleList.add(key);
+                }
+            }
+
             skedSkeduloApiData.dispatchJobResult result = dispatchJob(skedAllocation.sked__Job__c, skedAllocation.sked__Resource__c);
             if (result.success == TRUE) {
                 string resourceResponseString = Json.serialize(result.data.get(skedAllocation.sked__Resource__c));
@@ -139,6 +153,20 @@ global virtual class skedSkeduloApiManager {
         skedSkeduloApiData.locationHistoryResult result = (skedSkeduloApiData.locationHistoryResult)action.execute(endPoint, httpMethod, mapHeader, '');
         return result;
     }
+
+    public static skedSkeduloApiData.distanceMatrixResult calculateDistanceMatrix(List<skedModels.geometry> originList, List<skedModels.geometry> destinationList) {
+        string endPoint = DISTANCE_MATRIX_ENDPOINT;
+        string httpMethod = 'POST';
+        Map<string, string> mapHeader = new Map<string, string>();
+
+        distanceMatrixRequestBody requestBody = new distanceMatrixRequestBody(originList, destinationList);
+        string jsonBody = Json.serialize(requestBody);
+        
+        distanceMatrixAction action = new distanceMatrixAction();
+        skedSkeduloApiData.distanceMatrixResult result = (skedSkeduloApiData.distanceMatrixResult)action.execute(endPoint, httpMethod, mapHeader, jsonBody);
+        
+        return result;
+    }
     
     /*************************************************Nested classes*******************************************************/
     global class dispatchJobAction extends actionBase {
@@ -165,6 +193,32 @@ global virtual class skedSkeduloApiManager {
             return result;
         }
     }
+
+    global class distanceMatrixAction extends actionBase {
+        protected override skedCalloutResultBase initializeResult() {
+            return new skedSkeduloApiData.distanceMatrixResult();
+        }
+        
+        protected override skedCalloutResultBase processResponse(string response) {
+            system.debug('#response#' + response);
+            skedSkeduloApiData.distanceMatrixResult result = new skedSkeduloApiData.distanceMatrixResult();
+            Map<string, object> deserializedResponse = (Map<string, object>)Json.deserializeUntyped(response);
+            object resultNode = (Map<string, object>)deserializedResponse.get('result');
+            string resultNodeJson = Json.serialize(resultNode);
+            result.data = (skedSkeduloApiData.Matrix)Json.deserialize(resultNodeJson, skedSkeduloApiData.Matrix.class);
+            return result;
+        }
+    }
+
+    public class distanceMatrixRequestBody {
+        public List<skedModels.geometry> origins {get;set;}
+        public List<skedModels.geometry> destinations {get;set;}
+        
+        public distanceMatrixRequestBody(List<skedModels.geometry> originList, List<skedModels.geometry> destinationList) {
+            this.origins = originList;
+            this.destinations = destinationList;
+        }
+    }
     
     global virtual class actionBase extends skedCalloutActionBase {
         protected override skedCalloutResultBase doExecute(string endPoint, string httpMethod, Map<string, string> mapHeader, string body) {
@@ -173,13 +227,11 @@ global virtual class skedSkeduloApiManager {
                 result = super.doExecute(endPoint, httpMethod, mapHeader, body);
             }
             catch (skedCalloutException ex) {
-                system.debug('#1111#' + 1111);
                 result = initializeResult();
                 result.success = false;
                 result.message = ex.response;
             }
             catch (Exception ex) {
-                system.debug('#2222#' + 2222);
                 result = initializeResult();
                 result.success = false;
                 result.message = ex.getMessage() + ' - ' + ex.getStackTraceString();

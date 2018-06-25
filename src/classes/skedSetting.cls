@@ -72,6 +72,11 @@ global class skedSetting {
         public string skeduloAPIToken {get;set;}
         public string jobURL {get;set;}
         public boolean enableObjectSync {get;set;}
+        
+        public string nexmoApiKey {get;set;}
+        public string nexmoApiSecret {get;set;}
+        public string nexmoFromNumber {get;set;}
+        public boolean sendEnrouteSms {get;set;}
 
         public skedAdminSetting() {
             sked_Admin_Setting__c setting = sked_Admin_Setting__c.getOrgDefaults();
@@ -79,6 +84,10 @@ global class skedSetting {
             this.skeduloAPIToken = setting.sked_Skedulo_API_Token__c != NULL ? setting.sked_Skedulo_API_Token__c : '';
             this.jobURL = setting.sked_Global_JobURL__c != NULL ? setting.sked_Global_JobURL__c : '';
             this.enableObjectSync = setting.sked_Enable_Object_Sync__c;
+            this.nexmoApiKey = setting.sked_Nexmo_Api_Key__c;
+            this.nexmoApiSecret = setting.sked_Nexmo_Api_Secret__c;
+            this.nexmoFromNumber = setting.sked_Nexmo_From_Number__c;
+            this.sendEnrouteSms = setting.sked_Send_Enroute_SMS__c;
         }
     }
 

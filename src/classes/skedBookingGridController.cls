@@ -185,6 +185,19 @@ global class skedBookingGridController {
     }
 
     @remoteAction
+    global static skedRemoteResultModel saveJob(skedModels.job job, List<skedModels.jobOffer> jobOffers) {
+        skedRemoteResultModel result = new skedRemoteResultModel();
+        try {
+            job.timezoneSidId = skedUtils.getRegionTimezoneSidId(job.regionId);
+            
+        }
+        catch (Exception ex) {
+            result.getError(ex);
+        }
+        return result;
+    }
+
+    @remoteAction
     global static skedRemoteResultModel cancelJob(skedModels.job model) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         try {

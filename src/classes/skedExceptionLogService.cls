@@ -7,36 +7,46 @@ global class skedExceptionLogService {
 						 FROM Case
 						 WHERE Id = :caseId];
 
-		List<sked__Job__c> caseSkedJobs = [SELECT Id, Name, sked__Start__c, sked__Finish__c, sked__Duration__c,
-										   sked__Type__c, sked__Timezone__c, sked__Job_Allocation_Count__c,
-										   sked__Address__c, sked__GeoLocation__c, sked__Location__c
-										   FROM sked__Job__c
-										   WHERE sked_Case__c = :caseId
-										   AND sked__Job_Status__c != :skedConstants.JOB_STATUS_CANCELLED
-										   ORDER BY sked__Start__c];
-        if (!caseSkedJobs.isEmpty()) {
-	        string timezoneSidId = caseSkedJobs.get(0).sked__Timezone__c;
+		List<sked__Job__c> patientSkedJobs = [SELECT Id, Name, sked__Start__c, sked__Finish__c, sked__Duration__c,
+										   	  sked__Type__c, sked__Timezone__c, sked__Job_Allocation_Count__c,
+										   	  sked__Address__c, sked__GeoLocation__c, sked__Location__c, sked_Case__c
+										   	  FROM sked__Job__c
+										   	  WHERE sked_Case__c = :caseId
+										   	  AND sked__Job_Status__c != :skedConstants.JOB_STATUS_CANCELLED
+										   	  ORDER BY sked__Start__c];
+        if (!patientSkedJobs.isEmpty()) {
+	        string timezoneSidId = patientSkedJobs.get(0).sked__Timezone__c;
 	        skedAutoMapper.instance.setTimezoneSidId(timezoneSidId);
-	        
-	        /*DateTime firstJobStart = caseSkedJobs.get(0).sked__Start__c;
-	        DateTime lastJobEnd = caseSkedJobs.get(caseSkedJobs.size() - 1).sked__Finish__c;
 
-	        DateTime startTime = skedDateTimeUtils.getStartOfDate(firstJobStart, timezoneSidId);
-	        DateTime endTime = skedDateTimeUtils.getEndOfDate(lastJobEnd, timezoneSidId);
+	        for (integer i = 0; i < patientSkedJobs.size() - 1; i++) {
+	        	sked__Job__c currentJob = patientSkedJobs.get(i);
+	        	if (currentJob.sked_Case__c == caseId) {
+		        	for (integer j = i + 1; j < patientSkedJobs.size(); j++) {
+		        		sked__Job__c nextJob = patientSkedJobs.get(j);
+		        		if (nextJob.sked__Start__c > currentJob.sked__Finish__c) {
+		        			break;
+		        		}
+		        		if (currentJob.sked__Start__c < nextJob.sked__Finish__c && currentJob.sked__Finish__c > nextJob.sked__Start__c) {
+		        			skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_TIME_CONFLICT, caseItem, currentJob);
+		        			excetionLogs.add(exceptionLog);
+		        		}
+		        	}
+		        }
+	        }
 
-	        List<sked_Client_Availability__c> skedClientAvailabilities = skedClientAvailabilityService.getClientAvailability(caseItem.AccountId, startTime, endTime);*/
-
-	        for (sked__Job__c skedJob : caseSkedJobs) {
-        		if (skedJob.sked__Job_Allocation_Count__c == 0) {
-	        		skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_NO_ALLOCATION, caseItem, skedJob);
-	        		excetionLogs.add(exceptionLog);
-	        	}
-        		if (skedJob.sked__Type__c == skedConstants.JOB_TYPE_TREATMENT) {
-	        		if (skedJob.sked__Location__c == null) {
-	        			skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_MISSING_LOCATION, caseItem, skedJob);
-	        			excetionLogs.add(exceptionLog);
-	        		}
-	        	}
+	        for (sked__Job__c skedJob : patientSkedJobs) {
+	        	if (skedJob.sked_Case__c == caseId) {
+	        		if (skedJob.sked__Job_Allocation_Count__c == 0) {
+		        		skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_NO_ALLOCATION, caseItem, skedJob);
+		        		excetionLogs.add(exceptionLog);
+		        	}
+	        		if (skedJob.sked__Type__c == skedConstants.JOB_TYPE_TREATMENT) {
+		        		if (skedJob.sked__Location__c == null) {
+		        			skedModels.exceptionLog exceptionLog = captureExceptionLog(skedConstants.EXCEPTION_CODE_MISSING_LOCATION, caseItem, skedJob);
+		        			excetionLogs.add(exceptionLog);
+		        		}
+		        	}
+		        }
 	        }
 	    }
 

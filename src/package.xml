@@ -24,26 +24,34 @@
         <members>skedException</members>
         <members>skedExceptionLogService</members>
         <members>skedGridBuilder</members>
+        <members>skedGroupEventController</members>
+        <members>skedGroupEventService</members>
         <members>skedJobAllocationHandler</members>
         <members>skedJobAllocationService</members>
         <members>skedJobHandler</members>
+        <members>skedJobOfferHandler</members>
+        <members>skedJobOfferService</members>
+        <members>skedJobOffersController</members>
         <members>skedJobService</members>
         <members>skedMappingConfigContainer</members>
         <members>skedModels</members>
+        <members>skedNexmoApiData</members>
         <members>skedNotifyDispatchedJobsBatch</members>
         <members>skedObjectMapper</members>
-        <members>skedOfferService</members>
         <members>skedPacController</members>
         <members>skedRacController</members>
         <members>skedRacResourceAvailability</members>
         <members>skedRecurringFactory</members>
+        <members>skedRecurringService</members>
         <members>skedRemoteResultModel</members>
         <members>skedResourceAvailability</members>
         <members>skedResourceAvailabilityBase</members>
+        <members>skedSendEnrouteSmsBatch</members>
         <members>skedSetting</members>
         <members>skedShanarriStar</members>
         <members>skedSkeduloApiData</members>
         <members>skedSkeduloApiManager</members>
+        <members>skedSmsApiManager</members>
         <members>skedStatusMapper</members>
         <members>skedSupportPlanDeepCloneController</members>
         <members>skedSupportPlanUtils</members>
@@ -52,6 +60,7 @@
         <members>skedSyncManager</members>
         <members>skedTestTrackingLocationController</members>
         <members>skedTrackingResourceLocationBatch</members>
+        <members>skedTravelTimeService</members>
         <members>skedTriggerCentralizationHandler</members>
         <members>skedTriggerContainer</members>
         <members>skedUtils</members>
@@ -60,6 +69,8 @@
     </types>
     <types>
         <members>skedBookingGrid</members>
+        <members>skedGroupEvent</members>
+        <members>skedJobOffers</members>
         <members>skedPAC</members>
         <members>skedRAC</members>
         <members>skedShanarriStar</members>
@@ -85,15 +96,18 @@
         <members>sked_Client_Availability__c</members>
         <members>sked_Condition__c</members>
         <members>sked_Exception_Log__c</members>
+        <members>sked_Group_Attendee__c</members>
+        <members>sked_Group_Event__c</members>
+        <members>sked_Group_Tag__c</members>
         <members>sked_Health__c</members>
         <members>sked_Incident_Report__c</members>
         <members>sked_Involved_Individual__c</members>
+        <members>sked_Job_Offer__c</members>
         <members>sked_Medication__c</members>
         <members>sked_Must_Read_Information__c</members>
         <members>sked_Object_Field_Mapping__c</members>
         <members>sked_Object_Mapping_Dictionary__c</members>
         <members>sked_Object_Mapping__c</members>
-        <members>sked_Offer__c</members>
         <members>sked_Outcome__c</members>
         <members>sked_Practitioner_Profile__c</members>
         <members>sked_Roster_Management_Filter__c</members>
@@ -101,7 +115,7 @@
         <members>sked_Support_Delivered__c</members>
         <members>sked_Support_Guidance__c</members>
         <members>sked_Support_Note__c</members>
-        <members>sked_Support_Plan_Note__c</members>
+        <members>sked_Support_Plan_Comment__c</members>
         <members>sked_Support_Plan__c</members>
         <name>CustomObject</name>
     </types>

@@ -338,6 +338,13 @@
             "xmlName": "CustomObjectTranslation"
         },
         {
+            "directoryName": "translations",
+            "inFolder": false,
+            "metaFile": false,
+            "suffix": "translation",
+            "xmlName": "Translations"
+        },
+        {
             "directoryName": "classes",
             "inFolder": false,
             "metaFile": true,

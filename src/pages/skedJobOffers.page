@@ -1,0 +1,264 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" title="Job Offers" controller="skedJobOffersController">
+    
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1, maximum-scale=4.0, initial-scale=1.0"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="msapplication-tap-highlight" content="no"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        
+        <link rel="stylesheet" href="{!URLFOR($Resource.skedJobOffers, 'jobOffers/dist/styles.css')}"/>
+        
+        <style>
+            .modal-loading-box {
+            width: 100%;
+            height: 100px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            text-align: center
+            }
+            
+            .spinner-lines svg {
+            width: 20%;
+            height: 85px
+            }
+            
+            .spinner-lines.blue {
+            stroke: #0f7de2;
+            fill: #0f7de2
+            }
+            
+            .spinner-lines.white {
+            stroke: #fff;
+            fill: #fff
+            }
+            
+            .ng-cloak {
+            display: none !important;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="modal-loading-box">
+            <div class="spinner-lines blue">
+                <svg viewBox="0 0 64 64">
+                    <g stroke-width="7" stroke-linecap="round">
+                        <line x1="10" x2="10" y2="43.9828" y1="20.0172">
+                            <animate attributeName="y1" dur="750ms" values="16;18;28;18;16;16" repeatCount="indefinite"></animate>
+                            <animate attributeName="y2" dur="750ms" values="48;46;36;44;48;48" repeatCount="indefinite"></animate>
+                            <animate attributeName="stroke-opacity" dur="750ms" values="1;.4;.5;.8;1;1" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="24" x2="24" y2="47.5966" y1="16.4034">
+                            <animate attributeName="y1" dur="750ms" values="16;16;18;28;18;16" repeatCount="indefinite"></animate>
+                            <animate attributeName="y2" dur="750ms" values="48;48;46;36;44;48" repeatCount="indefinite"></animate>
+                            <animate attributeName="stroke-opacity" dur="750ms" values="1;1;.4;.5;.8;1" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="38" x2="38" y2="48" y1="16">
+                            <animate attributeName="y1" dur="750ms" values="18;16;16;18;28;18" repeatCount="indefinite"></animate>
+                            <animate attributeName="y2" dur="750ms" values="44;48;48;46;36;44" repeatCount="indefinite"></animate>
+                            <animate attributeName="stroke-opacity" dur="750ms" values=".8;1;1;.4;.5;.8" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="52" x2="52" y2="44.8069" y1="17.5966">
+                            <animate attributeName="y1" dur="750ms" values="28;18;16;16;18;28" repeatCount="indefinite"></animate>
+                            <animate attributeName="y2" dur="750ms" values="36;44;48;48;46;36" repeatCount="indefinite"></animate>
+                            <animate attributeName="stroke-opacity" dur="750ms" values=".5;.8;1;1;.4;.5" repeatCount="indefinite"></animate>
+                        </line>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
+        <div id="root" class="ng-cloak" style="display: none;">
+            <div ng-controller="FormController as $ctrl">
+                
+                <!-- Base View -->
+                <section ng-if="$ctrl.view === 0" class="section-products" style="top: 0;">
+                    <div class="content-padded" ng-if="$ctrl.user.name">
+                        <p class="text-color-gray">Hi {{$ctrl.user.name}}, you have been offered the below shifts. Please click Accept if you would like to accept a shift</p>
+                    </div>
+                    
+                    <div class="grid">
+                        <button class="btn btn-block btn-refresh" ng-if="$ctrl.view === 0 && !$ctrl.isLoading" ng-click="$ctrl.refresh()">
+                            Refresh <i class="sk sk-refresh"></i>
+                        </button>
+                    </div>
+                    
+                    
+                    <div class="list large">
+                        
+                        <div class="no-results" ng-if="$ctrl.jobOffers.length === 0 && $ctrl.isLoading">
+                            <div class="loader-inline"><i class="sk sk-spinner icon-spin"></i> Loading...</div>
+                        </div>
+                        
+                        <div class="no-results" ng-if="$ctrl.jobOffers.length === 0 && !$ctrl.isLoading">
+                            <div class="loader-inline">No Offers</div>
+                        </div>
+                        
+                        <div class="card-container list list-details content-padded"
+                             ng-repeat="item in $ctrl.jobOffers track by $index">
+                            
+                            <div class="card-item list-item" >
+                                
+                                <div class="grid" ng-click="item.showDetail = !item.showDetail">
+                                    <div class="col-7 padded">
+                                        <span ng-if="item.eventType !== 'Group Event'"><i class="sk fl custom-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="user" width="100%" height="100%"><path d="M23.1 19.8v1.1c0 1.2-1 2.2-2.2 2.2H3.1c-1.2 0-2.2-1-2.2-2.2v-1.1c0-2.6 3.2-4.3 6.1-5.6l.3-.1c.2-.1.5-.1.7 0 1.2.8 2.5 1.2 4 1.2s2.8-.4 3.9-1.2c.3-.1.5-.1.7 0l.3.1c3 1.3 6.2 2.9 6.2 5.6zM12 .9c3 0 5.5 2.7 5.5 6.1S15 13.1 12 13.1 6.5 10.4 6.5 7 9 .9 12 .9z"></path></svg>
+                                            </i> {{item.job.contactName}}</span>
+                                        <span ng-if="item.eventType === 'Group Event'"><i class="sk fl custom-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="groups" width="100%" height="100%"><path d="M7.3 12.9c-.6-.9-.9-2.1-.9-3.3 0-2.1.8-3.9 2.2-4.9-.4-.9-1.4-1.5-2.6-1.5-2 0-3.1 1.7-3.1 3.6 0 1 .3 1.9 1 2.5.3.3.7.8.7 1.3s-.2.9-1.4 1.4c-1.6.7-3.2 1.8-3.2 3.3 0 1 .7 1.8 1.7 1.8h1.5c.2 0 .4-.2.6-.4.7-1.3 2.1-2.2 3.3-2.8.4-.1.5-.7.2-1zm13.5-.9c-1.1-.5-1.3-.9-1.3-1.4s.3-1 .7-1.3c.7-.7 1-1.5 1-2.5 0-1.9-1.1-3.6-3.2-3.6-1.2 0-2.1.6-2.6 1.5 1.4 1 2.2 2.8 2.2 4.9 0 1.2-.3 2.4-.9 3.3-.3.4-.1.9.2 1 1.2.6 2.6 1.5 3.3 2.8.2.2.4.4.6.4h1.5c1 0 1.7-.8 1.7-1.8 0-1.5-1.5-2.6-3.2-3.3zm-5.7 3.4c-1.3-.6-1.5-1.1-1.5-1.6 0-.6.4-1.1.8-1.4.7-.7 1.2-1.7 1.2-2.8 0-2.1-1.3-3.9-3.6-3.9S8.5 7.5 8.5 9.6c0 1.1.5 2.1 1.2 2.8.4.4.8.9.8 1.4 0 .6-.2 1-1.5 1.6-1.8.8-3.6 1.6-3.6 3.3 0 1.1.8 2 1.8 2h9.6c1.1 0 1.9-.9 1.9-2 0-1.6-1.8-2.5-3.6-3.3z"></path>
+                                            </svg>
+                                            </i> {{item.job.contactName}}</span>
+                                    </div>
+                                    <div class="col-5 padded">
+                                        <span class="dot green-dot"></span> {{$ctrl.formatDateTime(item.job.startDate, item.job.startTime) | date: 'EEE d/M hh:mm a'}} </div>
+                                    
+                                    <div ng-show="item.showDetail">
+                                        <div class="col-7 padded">
+                                            <i class="sk sk-files fl"></i> {{item.job.eventType}}</div>
+                                        
+                                        <div class="col-5 padded">
+                                            <span class="dot red-dot"></span> {{$ctrl.formatDateTime(item.job.endDate, item.job.endTime) | date: 'EEE d/M hh:mm a'}} </div>
+                                        
+                                        <div class="col-12 padded">
+                                            <i class="sk sk-route fl"></i> {{item.job.address.fullAddress}} </div>
+                                        
+                                        <div class="col-12 padded">
+                                            <i class="sk sk-edit fl"></i> {{item.job.description}} </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="padded has-divider">
+                                    <div class="btn-container">
+                                        <button class="btn btn-small btn-small__custom text-center has-icon" ng-click="item.showDetail = !item.showDetail">
+                                            <i ng-if="!item.showDetail" class="sk sk-chevron-down fl"></i>
+                                            <i ng-if="item.showDetail" class="sk sk-chevron-up fl"></i>
+                                        </button>
+                                        <button class="btn btn-green-o btn-small btn-small__custom" ng-click="$ctrl.updateStatus(item, $index, 'Accepted')">Accept</button>
+                                        <button class="btn btn-red-o btn-small btn-small__custom" ng-click="$ctrl.updateStatus(item, $index, 'Declined')">Decline</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="modal" ng-class="{active: $ctrl.showModal}">
+                    <div class="prompt">
+                        <div class="prompt-header text-center">{{$ctrl.modalTitle}}</div>
+                        <div class="prompt-body">
+                            <div class="loader-inline" ng-show="$ctrl.isUpdating"><i class="sk sk-spinner icon-spin"></i> Working...</div>
+                            <p class="pad-b" ng-show="!$ctrl.isUpdating">{{$ctrl.modalMessage}}</p>
+                            <button type="button" ng-show="!$ctrl.isUpdating" class="btn btn-blue" tabindex="0" ng-click="$ctrl.closeModal()">Close</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <script>
+        function styleLoaded () {
+            document.getElementById('root').style.display = 'block'
+        }
+        </script>
+        
+        <script>
+        window.APP = {
+            URL: '{!$CurrentPage.URL}',
+            USER_ID: '{!$User.Id}'
+        }
+        
+        window.navGoBack = function() {
+            self.close();
+        }
+        </script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.min.js"></script>
+        
+        <script>
+            (function(window, angular) {
+                angular.module('api', [])
+                .factory('api', ['$q', '$http', '$timeout', function($q, $http, $timeout){
+                    return {  
+                        fetchJobOffers: function (resourceId) {
+                            var deferred = $q.defer();
+                            Visualforce.remoting.Manager.invokeAction(
+                                '{!$RemoteAction.skedJobOffersController.fetchJobOffers}', resourceId, function(result, event) {
+                                    if (event.status) {                                
+                                        if(!result.success) {
+                                            return deferred.reject(result.errorMessage);
+                                        }
+                                        
+                                        deferred.resolve(result);
+                                    } else {
+                                        //show error message.
+                                        deferred.reject(event.message);                              
+                                    }
+                                },
+                                { buffer: true, escape: false, timeout: 30000 }
+                            );
+                            return deferred.promise;    
+                        },
+                        
+                        fetchResource: function (userId) {
+                            var deferred = $q.defer();
+                            Visualforce.remoting.Manager.invokeAction(
+                                '{!$RemoteAction.skedJobOffersController.fetchResource}', userId, function(result, event) {
+                                    if (event.status) {                                
+                                        if(!result.success) {
+                                            return deferred.reject(result.errorMessage);
+                                        }
+                                        
+                                        deferred.resolve(result);
+                                    } else {
+                                        //show error message.
+                                        deferred.reject(event.message);                              
+                                    }
+                                },
+                                { buffer: true, escape: false, timeout: 30000 }
+                            );
+                            return deferred.promise;    
+                        },
+                        
+                        updateJobOfferStatus: function (jobOfferId, status) {
+                            var deferred = $q.defer();
+                            Visualforce.remoting.Manager.invokeAction(
+                                '{!$RemoteAction.skedJobOffersController.updateJobOfferStatus}', jobOfferId, status, function(result, event) {
+                                    if (event.status) {                                
+                                        if(!result.success) {
+                                            return deferred.reject(result.errorMessage);
+                                        }
+                                        
+                                        deferred.resolve(result);
+                                    } else {
+                                        //show error message.
+                                        deferred.reject(event.message);                              
+                                    }
+                                },
+                                { buffer: true, escape: false, timeout: 30000 }
+                            );
+                            return deferred.promise;    
+                        }   
+                    }
+                }
+                                ]);
+            })(window, angular);
+        </script>
+        
+        <script src="{!URLFOR($Resource.skedJobOffers, 'jobOffers/dist/util.js')}"></script>
+        <script src="{!URLFOR($Resource.skedJobOffers, 'jobOffers/dist/main.js')}"></script>
+        
+        <link rel="preload" href="{!URLFOR($Resource.skedJobOffers, 'jobOffers/dist/skedulo-mobile.min.css')}" as="style"
+        onload="this.rel='stylesheet'; styleLoaded();"/>
+            <script src="{!URLFOR($Resource.skedJobOffers, 'jobOffers/dist/cssrelpreload.js')}"></script>
+    </body>
+    
+</apex:page>

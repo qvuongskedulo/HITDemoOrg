@@ -3,10 +3,9 @@ global class skedSkeduloApiData {
     public static final string LOCATION_HISTORY_EVENT_TYPE_ENROUTE = 'ENROUTE';
     public static final string LOCATION_HISTORY_EVENT_TYPE_CHECKEDIN = 'CHECKEDIN';
     
-    global virtual class resultBase extends skedCalloutResultBase {
-        
-    }
+    global virtual class resultBase extends skedCalloutResultBase {}
     
+    /* LOCATION HISTORY */
     global class locationHistoryResult extends resultBase {
         public List<locationHistoryItem> data {get;set;}
     }
@@ -20,6 +19,7 @@ global class skedSkeduloApiData {
         public double locationLng {get;set;}
     }
     
+    /* DISPATCH */
     global class dispatchJobResult extends resultBase {
         public Map<string, object> data {get;set;}
     } 
@@ -33,6 +33,33 @@ global class skedSkeduloApiData {
 		public string referenceId {get;set;}
 		public string errorMessage {get;set;}
 		public string errorCode {get;set;}
+    }
+
+    /* DISTANCE MATRIX */
+    public class distanceMatrixResult extends resultBase {
+        public Matrix data {get;set;}
+        
+        public distanceMatrixResult() {
+            super();
+        }
+    }
+    
+    public class Matrix {
+        public List<List<Element>> matrix {get;set;}
+    }
+    
+    public class Distance {
+        public integer distanceInMeters {get;set;}
+    }
+    
+    public class Duration {
+        public integer durationInSeconds {get;set;}
+    }
+    
+    public class Element {
+        public Distance distance {get;set;}
+        public Duration duration {get;set;}
+        public string status {get;set;}
     }
 
 }

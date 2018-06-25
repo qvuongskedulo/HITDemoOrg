@@ -144,11 +144,37 @@ global class skedRacController {
     @remoteAction
     global static skedRemoteResultModel saveSchedule(skedModels.schedule model) {
         skedRemoteResultModel result = new skedRemoteResultModel();
+        SavePoint sp = Database.setSavePoint();
         try {
-            
+            skedRecurringService service = new skedRecurringService();
+            skedRecurringService.recurringOption config = new skedRecurringService.recurringOption();
+            config.schedule = model;
+            config.timezoneSidId = UserInfo.getTimeZone().getID();
+            config.sObjectType = 'sked__Availability__c';
+            config.startFieldApiName = 'sked__Start__c';
+            config.finishFieldApiName = 'sked__Finish__c';
+            config.scheduleFieldApiName = 'sked_Recurring_Schedule__c';
+            config.templateEntryApiName = 'sked_Template_Entry__c';
+
+            sked__Availability__c sourceRecord = [SELECT Id, sked__Resource__c, sked__Start__c, sked__Finish__c, 
+                                                  sked_Recurring_Schedule__c, sked__Status__c
+                                                  FROM sked__Availability__c 
+                                                  WHERE Id = 'a1B1r000009BOZm'];
+
+            skedRecurringService.recurringResult recurringResult = service.updateSchedule(sourceRecord, config);
+            if (!recurringResult.recordsToInsert.isEmpty()) {
+                insert recurringResult.recordsToInsert;
+            }
+            if (!recurringResult.recordsToUpdate.isEmpty()) {
+                update recurringResult.recordsToUpdate;
+            }
+            if (!recurringResult.recordsToDelete.isEmpty()) {
+                delete recurringResult.recordsToDelete;
+            }
         }
         catch (Exception ex) {
             result.getError(ex);
+            Database.rollback(sp);
         }
         return result;
     }

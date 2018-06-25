@@ -29,6 +29,36 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>sked_Nexmo_API_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>Nexmo API Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_Nexmo_API_secret__c</fullName>
+        <externalId>false</externalId>
+        <label>Nexmo API secret</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_Nexmo_From_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Nexmo From Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>sked_RAC_Auto_Approve_Availability__c</fullName>
         <defaultValue>true</defaultValue>
         <externalId>false</externalId>
@@ -171,6 +201,14 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sked_Send_Enroute_SMS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Send Enroute SMS</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>sked_Skedulo_API_Token__c</fullName>

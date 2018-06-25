@@ -70,12 +70,10 @@ global class skedPacController {
                 List<skedModels.job> jobs = new List<skedModels.job>();
 
                 for (sked__Job__c skedJob : skedJobs) {
-                    if (skedJob.sked_Case__c != model.caseId) {
-                        skedModels.job job = (skedModels.job)skedAutoMapper.instance.mapTo(skedJob, skedModels.job.class);
-                        job.loadJobTags(skedJob.sked__JobTags__r);
-                        job.loadJobAllocations(skedJob.sked__Job_Allocations__r);
-                        jobs.add(job);
-                    }
+                    skedModels.job job = (skedModels.job)skedAutoMapper.instance.mapTo(skedJob, skedModels.job.class);
+                    job.loadJobTags(skedJob.sked__JobTags__r);
+                    job.loadJobAllocations(skedJob.sked__Job_Allocations__r);
+                    jobs.add(job);
                 }
                 data.events = jobs;
             }
@@ -281,13 +279,11 @@ global class skedPacController {
         SavePoint sp = Database.setSavepoint();
         try {
             skedModels.job job = (skedModels.job)saveModel.event;
+            job.timezoneSidId = skedUtils.getRegionTimezoneSidId(job.regionId);
             job.jobStatus = skedConstants.JOB_STATUS_CANCELLED;
 
             skedJobService service = new skedJobService();
-            skedEventServiceBase.saveResult saveResult = service.saveRecord(job, saveModel.recurringOptions);
-
-            Set<Id> jobIds = skedUtils.getIdsFromList(saveResult.savedObjects);
-            skedJobService.cancelJobs(jobIds, job.cancellationReason);
+            service.saveRecord(job, saveModel.recurringOptions);
         }
         catch (Exception ex) {
             result.getError(ex);

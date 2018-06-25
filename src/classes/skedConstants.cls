@@ -14,6 +14,7 @@ public class skedConstants {
 
     public static final string CASE_STATUS_CLOSED = 'Closed';
 
+    public static final string EXCEPTION_CODE_TIME_CONFLICT = 'Time conflict';
     public static final string EXCEPTION_CODE_NO_ALLOCATION = 'No Allocation';
     public static final string EXCEPTION_CODE_MISSING_LOCATION = 'Missing Location';
     public static final string EXCEPTION_LOG_STATUS_CLOSED = 'Closed';
@@ -40,8 +41,14 @@ public class skedConstants {
     public static final string JOB_ALLOCATION_STATUS_PENDING_DISPATCH = 'Pending Dispatch';
     public static final string JOB_ALLOCATION_STATUS_IN_PROGRESS = 'In Progress';
 
+    public static final string JOB_OFFER_STATUS_OFFERED = 'Offered';
+    public static final string JOB_OFFER_STATUS_ACCEPTED = 'Accepted';
+    public static final string JOB_OFFER_STATUS_DECLINED = 'Declined';
+    public static final string JOB_OFFER_STATUS_CANCELLED = 'Cancelled';
+
     public static final string JOB_TYPE_INITIAL_EVALUATION = 'Initial Evaluation';
     public static final string JOB_TYPE_TREATMENT = 'Treatment';
+    public static final string JOB_TYPE_GROUP_EVENT = 'Group Event';
 
     public static final string RESOURCE_TYPE_PERSON = 'Person';
     public static final string RESOURCE_TYPE_ASSET = 'Asset';

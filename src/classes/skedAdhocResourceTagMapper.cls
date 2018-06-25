@@ -1,7 +1,5 @@
 public class skedAdhocResourceTagMapper extends skedAdhocMapperBase {
 	public override void execute(list<sObject> sourceRecords, list<sObject> targetRecords) {
-        system.debug('#############################################################################################################');
-        system.debug('################################ Enter custom adhoc mapper - skedAdhocResourceTagMapper. ####################');
         set<string> tags = new set<string>();
         for (sObject sourceRecord : sourceRecords) {
             tags.add((string)sourceRecord.get('HealthCloudGA__Code__c'));
@@ -44,6 +42,5 @@ public class skedAdhocResourceTagMapper extends skedAdhocMapperBase {
         for (sObject targetRecord : targetRecords) {
             targetRecord.put('sked__Tag__c', practitionerToTagMap.get((Id)targetRecord.get('sked_EHR_Practitioner_Qualification__c')));
         }
-        system.debug('################################# Endcustom adhoc mapper - skedAdhocResourceTagMapper.######################');
     }
 }

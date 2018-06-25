@@ -7,6 +7,7 @@ public class skedRecurringFactory {
 
     public static List<sObject> editRecurring(sObject sourceRecord, recurringOption configuration) {
         List<sObject> recurringRecords = new List<sObject>();
+        recurringRecords.add(sourceRecord);
         string sObjectType = sourceRecord.getSObjectType().getDescribe().getName();
         DateTime sourceRecordStart = (DateTime)sourceRecord.get(configuration.startFieldApiName);
         Id sourceRecordId = sourceRecord.Id;
@@ -86,6 +87,7 @@ public class skedRecurringFactory {
         string timezoneSidId = configuration.timezoneSidId;
         skedModels.template template = configuration.template;
 
+        configuration.skippedDates = new Set<Date>();
         if (configuration.skipHolidays == true) {
             Set<Date> holidays = getHolidays();
             configuration.skippedDates.addAll(holidays);

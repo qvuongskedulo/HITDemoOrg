@@ -19,31 +19,24 @@ public class skedObjectMapper {
     }
     
     public map<string, List<sObject>> execute(List<sObject> inputRecords) {
-        //system.debug('#####################################################skedObjectMapper########################################################');
         map<string, List<sObject>> map_targetObjectType_outputRecords = new map<string, List<sObject>>();
         
         for (objectMappingModel objectMappingItem : objectMappings) {
             buildsObjectRelation(inputRecords, objectMappingItem);
-            //system.debug('######## objectMappingItem: buildsObjectRelation' + objectMappingItem);
             
             buildExistedTargetRecords(objectMappingItem);
-            //system.debug('######## objectMappingItem: buildExistedTargetRecords' + objectMappingItem);
             
             buildLookupReferenceRecordMap(objectMappingItem);
-            //system.debug('######## objectMappingItem: buildLookupReferenceRecordMap' + objectMappingItem);
 
             //map based on field mapping configuration
             List<sObject> outputRecords = executeMapping(objectMappingItem);
-            //system.debug('######## objectMappingItem: executeMapping outputRecords' + outputRecords);
 
             //post process: addhoc mapping
             processAdhocMapping(objectMappingItem, outputRecords);
-            //system.debug('######## objectMappingItem: processAdhocMapping outputRecords' + outputRecords);
 
             map_targetObjectType_outputRecords.put(objectMappingItem.targetSObject, outputRecords);
         }
 
-        //system.debug('######## map_targetObjectType_outputRecords ' + map_targetObjectType_outputRecords);
         return map_targetObjectType_outputRecords;
     }
 
@@ -107,27 +100,21 @@ public class skedObjectMapper {
         set<string> filedsWithHierarchy = new set<string>();
         for (skedObjectMapper.objectFieldMappingModel fieldMappingItem : objectMappingItem.fieldsMapping) {
             if (fieldMappingItem.mappingType == skedObjectMapper.MAPPING_TYPE_COMPOUND) {
-                // remove first 2 characters ', '
-                string extractedFields = skedObjectMapper.extractCompoundField(fieldMappingItem.sourceField);
-                for (string item : extractedFields.split(',')) {
-                    filedsWithHierarchy.add(item.toLowerCase());
+                set<string> compoundFields = skedUtils.getFieldNameFromTemplate(fieldMappingItem.sourceField);
+                for (string compoundField : compoundFields) {
+                    filedsWithHierarchy.add(compoundField.toLowerCase());
                 }
             }
             else {
                 filedsWithHierarchy.add(fieldMappingItem.sourceField.toLowerCase());
             }
         }
-        
-        string filedsWithHierarchyBuilder = '';
-        for (string item : filedsWithHierarchy) {
-            filedsWithHierarchyBuilder += ', ' + item;
-            system.debug('############## filedsWithHierarchyBuilder: '+ filedsWithHierarchyBuilder);
-        }
-        // remove first 2 characters ', '
-        filedsWithHierarchyBuilder = filedsWithHierarchyBuilder.substring(2);
 
+        list<string> tempFieldWithHierachy = new list<string>();
+        tempFieldWithHierachy.addAll(filedsWithHierarchy);
+        
         string queryBuilder = '';
-        queryBuilder += ' SELECT ' + filedsWithHierarchyBuilder;
+        queryBuilder += ' SELECT ' + string.join(tempFieldWithHierachy, ', ');
         queryBuilder += ' FROM ' + objectMappingItem.sourceSObject;
         queryBuilder += ' WHERE Id IN :inputRecordIds';
         
@@ -144,7 +131,8 @@ public class skedObjectMapper {
             inputRecordIds.add((Id) record.get('Id'));
         }
 
-        string queryStatement = 'SELECT Id, ' + objectMappingItem.targetSObjectIdentifyField;
+        string queryStatement = '';
+        queryStatement += ' SELECT Id, ' + objectMappingItem.targetSObjectIdentifyField;
         queryStatement += ' FROM ' + objectMappingItem.targetSObject;
         queryStatement += ' WHERE ' + objectMappingItem.targetSObjectIdentifyField + ' IN :inputRecordIds';
 
@@ -209,11 +197,8 @@ public class skedObjectMapper {
                     continue;
                 }
 
-                //system.debug('#################### executeMapping fieldMappingItem.targetField: ' +fieldMappingItem.targetField);
                 SObjectField fieldType = mapFields.get(fieldMappingItem.targetField);
-                //system.debug('#################### executeMapping fieldType: ' +fieldType);
                 Schema.DisplayType outputDataType = fieldType.getDescribe().getType();
-                //system.debug('#################### executeMapping outputDataType: ' +outputDataType);
 
                 object outputValue;
                 if (fieldMappingItem.mappingType == skedObjectMapper.MAPPING_TYPE_DIRECT) {
@@ -222,11 +207,8 @@ public class skedObjectMapper {
                 else if (fieldMappingItem.mappingType == skedObjectMapper.MAPPING_TYPE_COMPOUND) {
                     string output = fieldMappingItem.sourceField;
                     for (string field : fieldMappingItem.sourceFields) {
-                        system.debug('################################## field: ' + field + ' ###############################');
                         string sourceFieldValue = (string) getSourceFieldValue(inputRecord, field);
-                        system.debug('############ sourceFieldValue: ' + sourceFieldValue + ' ###############################');
                         output = output.replace('{{' + field + '}}', sourceFieldValue == null ? '' : sourceFieldValue);
-                        system.debug('############ output: ' + output + ' ###############################');
                     }
                     outputValue = output;
                 }
@@ -279,17 +261,12 @@ public class skedObjectMapper {
         integer parentIndex = fullApiFieldNamePath.indexOf('.');
 
         while (parentIndex != -1) {
-            system.debug('########## fullApiFieldNamePath: ' +fullApiFieldNamePath);
-            system.debug('########## parentObject: ' +parentObject);
             string parentObjectName = fullApiFieldNamePath.subString(0, fullApiFieldNamePath.indexOf('.'));
             parentObject = parentObject.getSObject(parentObjectName);
             
             fullApiFieldNamePath = fullApiFieldNamePath.subString(fullApiFieldNamePath.indexOf('.') + 1, fullApiFieldNamePath.length());
             parentIndex = fullApiFieldNamePath.indexOf('.');
         }
-
-        system.debug('########## fullApiFieldNamePath: ' +fullApiFieldNamePath);
-        system.debug('########## parentObject: ' +parentObject);
         
         outputValue = parentObject.get(fullApiFieldNamePath);
         return outputValue;

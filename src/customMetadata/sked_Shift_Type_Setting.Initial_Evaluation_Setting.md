@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>sked_Background_Color__c</field>
-        <value xsi:type="xsd:string">#7986cb</value>
+        <value xsi:type="xsd:string">#0dbab1</value>
     </values>
     <values>
         <field>sked_Can_Be_Pre_dated__c</field>

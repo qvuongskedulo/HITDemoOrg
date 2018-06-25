@@ -69,7 +69,8 @@
       .config([
         'apiProvider',
         'envProvider',
-        function (apiProvider, envProvider) {
+        'langProvider',
+        function (apiProvider, envProvider, langProvider) {
           apiProvider.setController(apiController);
           apiProvider.setRemotingConfiguration({
             escape: false
@@ -77,6 +78,10 @@
           apiProvider.enableDebug();
           envProvider.setVariables({
             RESOURCE_PATH: "{!URLFOR($Resource.sked_HCO_Vendors, '/')}"
+          });
+
+          langProvider.define({
+            pageTitle: '{!$Label.Tab_Individual_Scheduling}'
           });
         }
       ]);

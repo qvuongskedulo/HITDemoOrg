@@ -28,7 +28,6 @@ public class skedSyncActions {
             list<sObject> updateRecords = new List<sObject>();
             
             for (list<sObject> sObjectTypeItems : updatedSObjects.values()) {
-                system.debug('############debug updateAction sObjectTypeItems: ' + sObjectTypeItems);
                 for (sObject record : sObjectTypeItems) {
                     if (record.get('Id') == null) {
                         insertRecords.add(record);

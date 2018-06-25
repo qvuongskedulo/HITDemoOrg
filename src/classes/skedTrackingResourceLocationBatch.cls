@@ -67,22 +67,48 @@ global class skedTrackingResourceLocationBatch implements Database.Batchable<sOb
                     }
                 }
             }
-            for (sked__Job_Allocation__c skedAllocation : skedAllocations) {
-                if (skedAllocation.sked_Start_Travel_GeoLocation__Latitude__s != NULL
-                    && skedAllocation.sked_Start_Travel_GeoLocation__Longitude__s != NULL
-                    && skedAllocation.sked_Check_In_GeoLocation__Latitude__s != NULL
-                    && skedAllocation.sked_Check_In_GeoLocation__Longitude__s != NULL) {
-                    Location startTravelLoc = Location.newInstance(skedAllocation.sked_Start_Travel_GeoLocation__Latitude__s, skedAllocation.sked_Start_Travel_GeoLocation__Longitude__s);
-                    Location checkedInLoc = Location.newInstance(skedAllocation.sked_Check_In_GeoLocation__Latitude__s, skedAllocation.sked_Check_In_GeoLocation__Longitude__s);
-                    skedAllocation.sked_Actual_Distance__c = startTravelLoc.getDistance(checkedInLoc, 'mi');
-                }
-            }
+            populatedActualDistance(skedAllocations);
+
             update skedAllocations;
         }
     }
+
+    private void populatedActualDistance(List<sked__Job_Allocation__c> skedAllocations) {
+        List<skedModels.geometry> origins = new List<skedModels.geometry>();
+        List<skedModels.geometry> destinations = new List<skedModels.geometry>();
+        List<sked__Job_Allocation__c> skedAllocationsToCalculateDistance = new List<sked__Job_Allocation__c>();
+
+        for (sked__Job_Allocation__c skedAllocation : skedAllocations) {
+            if (skedAllocation.sked_Start_Travel_GeoLocation__Latitude__s != NULL
+                && skedAllocation.sked_Start_Travel_GeoLocation__Longitude__s != NULL
+                && skedAllocation.sked_Check_In_GeoLocation__Latitude__s != NULL
+                && skedAllocation.sked_Check_In_GeoLocation__Longitude__s != NULL) {
+                Location startTravelLoc = Location.newInstance(skedAllocation.sked_Start_Travel_GeoLocation__Latitude__s, skedAllocation.sked_Start_Travel_GeoLocation__Longitude__s);
+                Location checkedInLoc = Location.newInstance(skedAllocation.sked_Check_In_GeoLocation__Latitude__s, skedAllocation.sked_Check_In_GeoLocation__Longitude__s);
+                
+                skedModels.geometry origin = new skedModels.geometry(startTravelLoc);
+                origins.add(origin);
+                skedModels.geometry destination = new skedModels.geometry(checkedInLoc);
+                destinations.add(destination);
+
+                skedAllocationsToCalculateDistance.add(skedAllocation);
+            }
+        }
+        if (!origins.isEmpty() && !destinations.isEmpty()) {
+            skedTravelTimeService travelTimeService = new skedTravelTimeService(origins, destinations);
+
+            for (sked__Job_Allocation__c skedAllocation : skedAllocationsToCalculateDistance) {
+                skedModels.journey journey = travelTimeService.getJourney(skedAllocation.sked_Start_Travel_GeoLocation__Latitude__s, 
+                                                                          skedAllocation.sked_Start_Travel_GeoLocation__Longitude__s,
+                                                                          skedAllocation.sked_Check_In_GeoLocation__Latitude__s,
+                                                                          skedAllocation.sked_Check_In_GeoLocation__Longitude__s);
+                if (journey != NULL && journey.distance != NULL) {
+                    skedAllocation.sked_Actual_Distance__c = journey.distance;
+                }
+            }
+        }
+    }
     
-    global void finish(Database.BatchableContext BC) {
-        
-    }   
+    global void finish(Database.BatchableContext BC) {}   
     
 }

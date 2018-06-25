@@ -61,7 +61,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Group Attendee</label>
-        <referenceTo>Group_Attendee__c</referenceTo>
+        <referenceTo>sked_Job_Attendee__c</referenceTo>
         <relationshipLabel>Support Delivered</relationshipLabel>
         <relationshipName>sked_Support_Delivered</relationshipName>
         <required>false</required>

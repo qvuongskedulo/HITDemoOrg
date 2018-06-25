@@ -119,6 +119,7 @@ public abstract class skedEventServiceBase {
             }
             else {
                 List<sObject> recurringRecords = skedRecurringFactory.editRecurring(record, recurringOptions);
+                system.debug('#recurringRecords#' + recurringRecords.size());
                 allRecords.addAll(recurringRecords);
             }
         }

@@ -10,7 +10,10 @@ global class skedJobService extends skedEventServiceBase {
         
         this.fieldsToTrackChange = new List<string>();
         this.fieldsToTrackChange.add('sked__Duration__c');
+        this.fieldsToTrackChange.add('sked__Job_Status__c');
         this.fieldsToTrackChange.add('sked__Notes_Comments__c');
+        this.fieldsToTrackChange.add('sked_Cancellation_Reason__c');
+        this.fieldsToTrackChange.add('sked_Cancellation_Reason_Notes__c');
         this.fieldsToTrackChange.add('sked_Is_Care_Team__c');
     }
     
@@ -124,6 +127,7 @@ global class skedJobService extends skedEventServiceBase {
         fields.add('sked__Job_Allocation_Count__c');
         fields.add('sked__Job_Status__c');
         fields.add('sked__Notes_Comments__c');
+        fields.add('sked__Quantity__c');
         fields.add('sked__Recurring_Schedule__c');
         fields.add('sked__Region__c');
         fields.add('sked__Start__c');

@@ -263,7 +263,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Support Plan</label>
-        <referenceTo>Case</referenceTo>
+        <referenceTo>sked_Support_Plan__c</referenceTo>
         <relationshipLabel>Support Notes</relationshipLabel>
         <relationshipName>sked_Support_Notes</relationshipName>
         <required>false</required>
