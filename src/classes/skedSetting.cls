@@ -93,6 +93,7 @@ global class skedSetting {
 
     public class skedRacSetting extends skedCalendarSettingBase {
         public boolean autoApproveAvailability {get;set;}
+        public boolean enableShift {get;set;}
         public boolean enableActivity {get;set;}
         public boolean enableAvailabilityTemplate {get;set;}
         public boolean respectResourceTimezone {get;set;}
@@ -109,6 +110,7 @@ global class skedSetting {
             this.calendarStep = setting.sked_RAC_Calendar_Step__c != NULL ? integer.valueOf(setting.sked_RAC_Calendar_Step__c) : 30;
             this.autoApproveAvailability = setting.sked_RAC_Auto_Approve_Availability__c;
             this.enableActivity = setting.sked_RAC_Enable_Activity__c;
+            this.enableShift = setting.sked_RAC_Enable_Shift__c;
             this.enableAvailabilityTemplate = setting.sked_RAC_Enable_Availability_Template__c;
             this.respectResourceTimezone = setting.sked_RAC_Respect_Resource_Timezone__c;
 

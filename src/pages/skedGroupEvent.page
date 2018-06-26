@@ -1,4 +1,4 @@
-<apex:page sidebar="false" standardstylesheets="false" showheader="true" doctype="html-5.0" standardController="sked_Group_Event__c">
+<apex:page sidebar="false" standardstylesheets="false" showheader="true" doctype="html-5.0" standardController="sked_Group_Event__c" extensions="skedGroupEventController">
 <head>
   <meta charset="UTF-8" />
   <title>Group Event</title>
@@ -67,10 +67,6 @@
   <script src="{!URLFOR($Resource.sked_HCO_Vendors, '/momentjs/moment.min.js')}"></script>
   <script src="{!URLFOR($Resource.sked_HCO_Vendors, '/angular-google-maps.min.js')}"></script>
 	
-  <!-- mock -->
-  <script src="{!URLFOR($Resource.sked_HCO_Dist, '/mock/mock-helper.js')}"></script>
-  <script src="{!URLFOR($Resource.sked_HCO_Dist, '/mock/group-event-details-mock.js')}"></script>
-    
   <!-- app -->
   <script src="{!URLFOR($Resource.sked_HCO_Dist, '/scripts/hco-ge.js')}"></script>
 
@@ -95,7 +91,7 @@
         }
       ]);
 
-    })(angular, GEMockController);
+    })(angular, skedGroupEventController);
   </script>
 </body>
     

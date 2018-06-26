@@ -46,6 +46,7 @@
         <members>skedRemoteResultModel</members>
         <members>skedResourceAvailability</members>
         <members>skedResourceAvailabilityBase</members>
+        <members>skedSearchService</members>
         <members>skedSendEnrouteSmsBatch</members>
         <members>skedSetting</members>
         <members>skedShanarriStar</members>
@@ -59,6 +60,7 @@
         <members>skedSyncActions</members>
         <members>skedSyncManager</members>
         <members>skedTestTrackingLocationController</members>
+        <members>skedTrackingLocationSchedule</members>
         <members>skedTrackingResourceLocationBatch</members>
         <members>skedTravelTimeService</members>
         <members>skedTriggerCentralizationHandler</members>

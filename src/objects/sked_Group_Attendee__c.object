@@ -73,7 +73,8 @@
         <externalId>false</externalId>
         <label>Group Event</label>
         <referenceTo>sked_Group_Event__c</referenceTo>
-        <relationshipName>sked_Group_Clients</relationshipName>
+        <relationshipLabel>Group Attendees</relationshipLabel>
+        <relationshipName>sked_Group_Attendees</relationshipName>
         <relationshipOrder>1</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>

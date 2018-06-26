@@ -279,25 +279,15 @@ global class skedJobService extends skedEventServiceBase {
     }
 
     public static void dispatchJobs(Set<Id> jobIds) {
-        List<sked__Job__c> skedJobs = [SELECT Id, 
-                                       (SELECT Id, sked__Status__c,
-                                        sked__Resource__c
-                                        FROM sked__Job_Allocations__r
-                                        WHERE sked__Status__c != :skedConstants.JOB_ALLOCATION_STATUS_DELETED
-                                        AND sked__Status__c != :skedConstants.JOB_ALLOCATION_STATUS_DECLINED)
-                                       FROM sked__Job__c
-                                       WHERE Id IN :jobIds];
-        List<sked__Job_Allocation__c> skedAllocsToUpdate = new List<sked__Job_Allocation__c>();
-        for (sked__Job__c skedJobToDispatch : skedJobs) {
-            for (sked__Job_Allocation__c skedAlloc : skedJobToDispatch.sked__Job_Allocations__r) {
-                if (skedAlloc.sked__Status__c == skedConstants.JOB_ALLOCATION_STATUS_PENDING_DISPATCH) {
-                    skedAlloc.sked__Status__c = skedConstants.JOB_ALLOCATION_STATUS_DISPATCHED;
-                    skedAllocsToUpdate.add(skedAlloc);
-                }
+        List<sked__Job_Allocation__c> skedAllocations = [SELECT Id
+                                                         FROM sked__Job_Allocation__c
+                                                         WHERE sked__Job__c IN :jobIds
+                                                         AND sked__Status__c = :skedConstants.JOB_ALLOCATION_STATUS_PENDING_DISPATCH];
+        if (!skedAllocations.isEmpty()) {
+            for (sked__Job_Allocation__c skedAlloc : skedAllocations) {
+                skedAlloc.sked__Status__c = skedConstants.JOB_ALLOCATION_STATUS_DISPATCHED;
             }
-        }
-        if (!skedAllocsToUpdate.isEmpty()) {
-            update skedAllocsToUpdate;
+            update skedAllocations;
         }
     }
     

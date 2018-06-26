@@ -42,7 +42,12 @@ global class skedBookingGridController {
                                             sked_Estimated_Distance__c, sked__Estimated_Travel_Time__c
                                             FROM sked__Job_Allocations__r
                                             WHERE sked__Status__c != :skedConstants.JOB_ALLOCATION_STATUS_DELETED
-                                            AND sked__Status__c != :skedConstants.JOB_ALLOCATION_STATUS_DECLINED)
+                                            AND sked__Status__c != :skedConstants.JOB_ALLOCATION_STATUS_DECLINED),
+                                           (SELECT Id, sked_Job__c, sked_Resource__c, sked_Resource__r.Name,
+                                            sked_Resource__r.sked__User__r.SmallPhotoUrl,
+                                            sked_Estimated_Distance__c, sked_Estimated_Travel_Time__c
+                                            FROM sked_Job_Offers__r
+                                            WHERE sked_Status__c != :skedConstants.JOB_OFFER_STATUS_CANCELLED)
                                            FROM sked__Job__c
                                            WHERE sked__Account__c = :accountId
                                            AND sked__Type__c = :skedConstants.JOB_TYPE_INITIAL_EVALUATION
@@ -55,6 +60,9 @@ global class skedBookingGridController {
                 }
                 if (skedJob.sked__Job_Allocations__r != null && !skedJob.sked__Job_Allocations__r.isEmpty()) {
                     job.loadJobAllocations(skedJob.sked__Job_Allocations__r);
+                }
+                if (skedJob.sked_Job_Offers__r != null && !skedJob.sked_Job_Offers__r.isEmpty()) {
+                    job.loadJobOffers(skedJob.sked_Job_Offers__r);
                 }
                 scheduledJobs.add(job);
             }
@@ -185,11 +193,95 @@ global class skedBookingGridController {
     }
 
     @remoteAction
-    global static skedRemoteResultModel saveJob(skedModels.job job, List<skedModels.jobOffer> jobOffers) {
+    global static skedRemoteResultModel saveJob(skedModels.job job) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         try {
             job.timezoneSidId = skedUtils.getRegionTimezoneSidId(job.regionId);
-            
+            if (string.isBlank(job.id)) {
+                job.jobStatus = skedConstants.JOB_STATUS_PENDING_ALLOCATION;
+            }
+            skedJobService service = new skedJobService();
+            service.saveRecord(job);
+        }
+        catch (Exception ex) {
+            result.getError(ex);
+        }
+        return result;
+    }
+
+    @remoteAction
+    global static skedRemoteResultModel saveAllocations(List<skedModels.job> jobs, boolean notifyResourceOnSave) {
+        skedRemoteResultModel result = new skedRemoteResultModel();
+        try {
+            List<sked__Job_Allocation__c> skedAllocsToInsert = new List<sked__Job_Allocation__c>();
+            List<sked__Job_Allocation__c> skedAllocsToUpdate = new List<sked__Job_Allocation__c>();
+
+            List<sked_Job_Offer__c> skedOffersToInsert = new List<sked_Job_Offer__c>();
+            List<sked_Job_Offer__c> skedOffersToUpdate = new List<sked_Job_Offer__c>();
+
+            Map<Id, skedModels.job> mapJobModel = new Map<Id, skedModels.job>();
+            for (skedModels.job job : jobs) {
+                mapJobModel.put(job.id, job);
+                for (skedModels.jobAllocation allocation : job.allocations) {
+                    if (string.isBlank(allocation.action)) {
+                        continue;
+                    }
+                    if (allocation.action == 'create') {
+                        sked__Job_Allocation__c skedAlloc = new sked__Job_Allocation__c(
+                            sked__Job__c = allocation.jobId,
+                            sked__Resource__c = allocation.resourceId,
+                            sked__Estimated_Travel_Time__c = allocation.travelTimeFrom,
+                            sked_Estimated_Distance__c = allocation.travelDistanceFrom,
+                            sked__Status__c = skedConstants.JOB_ALLOCATION_STATUS_PENDING_DISPATCH
+                        );
+                        skedAllocsToInsert.add(skedAlloc);
+                    }
+                    else if (allocation.action == 'delete') {
+                        sked__Job_Allocation__c skedAlloc = new sked__Job_Allocation__c(
+                            Id = allocation.id,
+                            sked__Status__c = skedConstants.JOB_ALLOCATION_STATUS_DELETED
+                        );
+                        skedAllocsToUpdate.add(skedAlloc);
+                    }
+                }
+
+                for (skedModels.jobOffer jobOffer : job.jobOffers) {
+                    if (string.isBlank(jobOffer.action)) {
+                        continue;
+                    }
+                    if (jobOffer.action == 'create') {
+                        sked_Job_Offer__c skedJobOffer = new sked_Job_Offer__c(
+                            sked_Job__c = jobOffer.jobId,
+                            sked_Resource__c = jobOffer.resourceId,
+                            sked_Estimated_Travel_Time__c = jobOffer.travelTimeFrom,
+                            sked_Estimated_Distance__c = jobOffer.travelDistanceFrom,
+                            sked_Status__c = skedConstants.JOB_OFFER_STATUS_OFFERED
+                        );
+                        skedOffersToInsert.add(skedJobOffer);
+                    }
+                    else if (jobOffer.action == 'delete') {
+                        sked_Job_Offer__c skedJobOffer = new sked_Job_Offer__c(
+                            Id = jobOffer.id,
+                            sked_Status__c = skedConstants.JOB_OFFER_STATUS_CANCELLED
+                        );
+                        skedOffersToUpdate.add(skedJobOffer);
+                    }
+                }
+            }
+
+            if (!skedAllocsToInsert.isEmpty()) {
+                insert skedAllocsToInsert;
+            }
+            if (!skedAllocsToUpdate.isEmpty()) {
+                update skedAllocsToUpdate;
+            }
+
+            if (!skedOffersToInsert.isEmpty()) {
+                insert skedOffersToInsert;
+            }
+            if (!skedOffersToUpdate.isEmpty()) {
+                update skedOffersToUpdate;
+            }
         }
         catch (Exception ex) {
             result.getError(ex);

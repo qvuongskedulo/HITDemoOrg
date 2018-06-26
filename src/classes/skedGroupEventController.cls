@@ -1,5 +1,8 @@
 global class skedGroupEventController {
 
+    public skedGroupEventController(ApexPages.StandardController stdController) {
+    }
+
     @remoteAction
     global static skedRemoteResultModel getConfigData() {
         skedRemoteResultModel result = new skedRemoteResultModel();
@@ -8,6 +11,7 @@ global class skedGroupEventController {
             configData.regions = skedUtils.getRegions();
             configData.statuses = skedUtils.getPickListOptions('sked__Group_Event__c', 'sked__Status__c');
             configData.tags = skedUtils.getTags();
+            configData.cancellationReasons = skedUtils.getPickListValues('sked__Job__c', 'sked_Cancellation_Reason__c');
 
             result.data = configData;
         } catch (Exception ex) {
@@ -17,7 +21,7 @@ global class skedGroupEventController {
     }
 
     @remoteAction
-    global static skedRemoteResultModel searchContact(skedModels.searchOption searchModel) {
+    global static skedRemoteResultModel searchContacts(skedSearchService.searchOptionModel searchModel) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         SavePoint sp = Database.setSavepoint();
         try {
@@ -29,7 +33,20 @@ global class skedGroupEventController {
             Database.rollback(sp);
         }
         return result;
+    }
 
+    @remoteAction
+    global static skedRemoteResultModel getGroupEvent(skedModels.groupEvent groupEventModel) {
+        skedRemoteResultModel result = new skedRemoteResultModel();
+        SavePoint sp = Database.setSavepoint();
+        try {
+            
+        } 
+        catch (Exception ex) {
+            result.getError(ex);
+            Database.rollback(sp);
+        }
+        return result;
     }
 
     @remoteAction
@@ -37,6 +54,45 @@ global class skedGroupEventController {
         skedRemoteResultModel result = new skedRemoteResultModel();
         SavePoint sp = Database.setSavepoint();
         try {
+            skedGroupEventService groupEventService = new skedGroupEventService();
+            // Save Group Event
+            groupEventService.saveRecord(groupEventModel);
+
+            // Save Group Attendee
+            for (skedModels.groupAttendee attendee : groupEventModel.attendees) {
+                attendee.groupEventId = groupEventModel.Id;
+            }
+            saveGroupAttendees(groupEventModel.attendees);
+
+            // Save Group Tag
+        } 
+        catch (Exception ex) {
+            result.getError(ex);
+            Database.rollback(sp);
+        }
+        return result;
+    }
+
+    @remoteAction
+    global static skedRemoteResultModel saveGroupAttendees(List<skedModels.groupAttendee> groupAttendeeModels) {
+        skedRemoteResultModel result = new skedRemoteResultModel();
+        SavePoint sp = Database.setSavepoint();
+        try {
+            skedGroupEventService groupEventService = new skedGroupEventService();
+            result.data = groupEventService.saveRecord(groupAttendeeModels);
+        }
+        catch (Exception ex) {
+            result.getError(ex);
+            Database.rollback(sp);
+        }
+        return result;
+    }
+
+    @remoteAction
+    global static skedRemoteResultModel removeGroupAttendee(skedModels.groupAttendee groupAttendeeModel) {
+        skedRemoteResultModel result = new skedRemoteResultModel();
+        SavePoint sp = Database.setSavepoint();
+        try {
             
         } 
         catch (Exception ex) {
@@ -47,12 +103,13 @@ global class skedGroupEventController {
     }
 
     @remoteAction
-    global static skedRemoteResultModel addGroupClient(skedModels.groupAttendee groupClientModel) {
+    global static skedRemoteResultModel saveGroupTag(list<skedModels.groupTag> groupTagModels) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         SavePoint sp = Database.setSavepoint();
         try {
-
-        } 
+            skedGroupEventService groupEventService = new skedGroupEventService();
+            result.data = groupEventService.saveRecord(groupTagModels);
+        }
         catch (Exception ex) {
             result.getError(ex);
             Database.rollback(sp);
@@ -61,12 +118,13 @@ global class skedGroupEventController {
     }
 
     @remoteAction
-    global static skedRemoteResultModel removeGroupClient(skedModels.groupAttendee groupClientModel) {
+    global static skedRemoteResultModel getJobAteendee(groupEventJobModel groupEventJobModel) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         SavePoint sp = Database.setSavepoint();
         try {
-            
-        } 
+            //skedGroupEventService groupEventService = new skedGroupEventService();
+            //list<sked_Group_Tag__c> groupTags = groupEventService.saveRecord(groupTagModels)[0];
+        }
         catch (Exception ex) {
             result.getError(ex);
             Database.rollback(sp);
@@ -123,9 +181,20 @@ global class skedGroupEventController {
         public List<skedModels.region> regions {get; set;}
         public List<skedModels.selectOption> statuses {get; set;}
         public List<skedModels.tag> tags {get; set;}
+        public List<string> cancellationReasons {get; set;}
     }
 
     global class jobSaveModel {
         public skedModels.job event {get;set;}
+    }
+
+    global class groupEventJobModel extends skedModels.job {
+        public string groupEventId {get;set;}
+        public list<jobAttendeeModel> jobAttendees {get;set;}
+    }
+
+    global class jobAttendeeModel extends skedModels.modelBase{
+        public string action {get; set;}
+        public string contactId {get; set;}
     }
 }

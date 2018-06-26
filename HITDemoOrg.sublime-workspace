@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"J",
+				"JOB_OFFER_STATUS_ACCEPTED"
+			],
+			[
 				"con",
 				"convertTimeNumberToMinutes"
 			],
@@ -356,10 +360,6 @@
 				"validateQueuedJobsInMonth"
 			],
 			[
-				"J",
-				"Job_Month__c"
-			],
-			[
 				"RE",
 				"PUBLIC RESOURCE_CATEGORY_INSTRUCTOR\tString"
 			],
@@ -520,20 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/classes/skedRecurringService.cls",
+			"file": "src/classes/skedPacController.cls",
 			"settings":
 			{
-				"buffer_size": 11476,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/classes/skedRacController.cls",
-			"settings":
-			{
-				"buffer_size": 20048,
-				"encoding": "UTF-8",
+				"buffer_size": 18950,
 				"line_ending": "Unix"
 			}
 		}
@@ -583,29 +573,45 @@
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/debug",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/objects",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/triggers"
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages"
 	],
 	"file_history":
 	[
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedExceptionLogService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTestTrackingLocationController.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRecurringFactory.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRacController.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedModels.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedGroupEventController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSetting.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSkeduloApiManager.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSkeduloApiData.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTravelTimeService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedBookingGridController.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedJobAllocationTriggerHandler.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobOffersController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedRAC.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedBookingGrid.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedPAC.page",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedMappingConfigContainer.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTrackingResourceLocationBatch.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCalloutResultBase.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSmsApiManager.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/sked_CarePlan_SupportNotesContoller.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAutoMapper.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMSServices.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMS.cls",
+		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMSHandler.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRecurringService.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRacController.cls",
+		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedGroupEventController.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCommonService.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobOfferService.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedExceptionLogService.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedConstants.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobHandler.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobOfferHandler.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedMappingConfigContainer.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedPacController.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedEventServiceBase.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobService.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/triggers/skedJobTrigger.trigger",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedBookingGridController.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailabilityService.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedClientAvailabilityService.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedActivityService.cls",
@@ -618,33 +624,20 @@
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedResourceAvailabilityBase.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedRacResourceAvailability.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedResourceAvailability.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAutoMapper.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedBaseModels.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSetting.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedObjectMapper.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTrackingResourceLocationBatch.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailator.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSkeduloApiManager.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedPAC.page",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAllocationService.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/triggers/skedJobAllocationTrigger.trigger",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedJobAllocationHandler.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedSkeduloApiData.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedTestTrackingLocationController.cls",
 		"/C/Users/QuanVuong/Documents/Skedulo/SMS/objects/sked__Job__c.object",
 		"/C/Users/QuanVuong/Documents/Skedulo/SMS/objects/Skedulo_SMS__c.object",
-		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMSServices.cls",
-		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMSHandler.cls",
-		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedSMS.cls",
-		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedJobAllocationTriggerHandler.cls",
 		"/C/Users/QuanVuong/Documents/Skedulo/SMS/classes/skedConstants.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCalloutActionBase.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedNotifyDispatchedJobsBatch.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedCalloutResultBase.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedAvailatorParams.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/classes/skedDataServiceBase.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedRMC.page",
-		"/C/Users/QuanVuong/Documents/SublimeText/HITDemoOrg/src/pages/skedRAC.page",
 		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResourceReportController.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedDataSetup.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedConstants.cls",
@@ -711,12 +704,7 @@
 		"/C/Users/QuanVuong/Desktop/skedOutlook365/OutlookCalendar.cls",
 		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedOutlookCalendarCallouts.cls",
 		"/C/Users/QuanVuong/Desktop/skedOutlook365/skedOutlookAuthController.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedTravelTimeService.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedTravelTimeServiceBase.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedResourceAvailability.cls",
-		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/triggers/skedActivityTrigger.trigger",
-		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/pages/skedScheduleAllocation.page",
-		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedGeoservicesApi.cls"
+		"/C/Users/QuanVuong/Documents/SublimeText/AmericaRedCrossSB/src/classes/skedTravelTimeService.cls"
 	],
 	"find":
 	{
@@ -736,6 +724,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"clientAvailabilityQueryModel",
+			"dispatchJobAllocations",
+			"dispatchJobs",
+			"skedBaseModels",
 			"templateEntryApiName",
 			"createRecurringRecords",
 			"skedAutoMapper",
@@ -859,11 +851,7 @@
 			"validateConflictResourceShift",
 			"from",
 			"where",
-			"Select",
-			"catch(",
-			"try{",
-			"IGNORED_JOB_STATUSES",
-			"adminSetting"
+			"Select"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -871,6 +859,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"skedModels",
 			"map_entryId_currentRecords",
 			"config",
 			"skedModels",
@@ -924,19 +913,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/classes/skedRecurringService.cls",
+					"file": "src/classes/skedPacController.cls",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11476,
+						"buffer_size": 18950,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9268,
-								9268
+								1571,
+								1571
 							]
 						],
 						"settings":
@@ -950,36 +939,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/classes/skedRacController.cls",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 20048,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6696,
-								6696
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 330.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]

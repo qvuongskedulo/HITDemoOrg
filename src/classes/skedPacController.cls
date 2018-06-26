@@ -50,7 +50,7 @@ global class skedPacController {
             data.timezone = startTime.format('z', timezoneSidId);
 
             if (model.objectTypes.contains('clientAvailability')) {
-                List<sked_Client_Availability__c> skedClientAvailabilities = skedClientAvailabilityService.getClientAvailability(model.patientId, startTime, endTime);
+                List<sked_Client_Availability__c> skedClientAvailabilities = skedClientAvailabilityService.getClientAvailability(model.recId, startTime, endTime);
                 List<skedModels.clientAvailability> clientAvailabilities = new List<skedModels.clientAvailability>();
 
                 for (sked_Client_Availability__c skedClientAvailability : skedClientAvailabilities) {
@@ -62,7 +62,7 @@ global class skedPacController {
 
             if (model.objectTypes.contains('job')) {
                 skedJobService.jobQueryModel jobQuery = new skedJobService.jobQueryModel();
-                jobQuery.patientId = model.patientId;
+                jobQuery.patientId = model.recId;
                 jobQuery.startTime = startTime;
                 jobQuery.startTime = startTime;
                 jobQuery.endTime = endTime;
@@ -219,8 +219,7 @@ global class skedPacController {
     
     global class clientAvailabilityQueryModel {
         public string regionId {get;set;}
-        public string patientId {get;set;}
-        public string caseId {get;set;}
+        public string recId {get;set;}
         public string startDate {get;set;}
         public string endDate {get;set;}
         public List<string> objectTypes {get;set;}
@@ -243,7 +242,7 @@ global class skedPacController {
     global static skedRemoteResultModel getExceptionLogs(clientAvailabilityQueryModel model) {
         skedRemoteResultModel result = new skedRemoteResultModel();
         try {
-            result.data = skedExceptionLogService.getCaseExceptionLogs(model.caseId);
+            result.data = skedExceptionLogService.getPatientExceptionLogs(model.recId);
         }
         catch (Exception ex) {
             result.getError(ex);
@@ -364,12 +363,6 @@ global class skedPacController {
                             sked__Status__c = skedConstants.JOB_ALLOCATION_STATUS_PENDING_DISPATCH
                         );
                         skedAllocsToInsert.add(skedAlloc);
-                    }
-                    else if (allocation.action == 'update') {
-                        //sked__Job_Allocation__c skedAlloc = new sked__Job_Allocation__c(
-                        //   Id = allocation.id
-                        //);
-                        //skedAllocsToUpdate.add(skedAlloc);
                     }
                     else if (allocation.action == 'delete') {
                         sked__Job_Allocation__c skedAlloc = new sked__Job_Allocation__c(

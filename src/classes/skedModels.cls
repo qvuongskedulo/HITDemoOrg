@@ -4,6 +4,7 @@ global class skedModels {
         public string id {get; set;}
         public string name {get; set;}
         public boolean selected {get; set;}
+        public string action {get; set;}
     }
 
     global virtual class event extends modelBase implements Comparable {
@@ -132,11 +133,13 @@ global class skedModels {
         public List<job> followups {get; set;}
         public List<jobAllocation> allocations {get; set;}
         public List<jobAllocation> possibleAllocations {get; set;}
+        public List<jobOffer> jobOffers {get; set;}
 
         public List<Id> tagIds {get; set;}
         public List<tag> tags {get; set;}
         public List<Id> excludedTagIds {get; set;}
         public List<tag> excludedTags {get; set;}
+        public List<jobAttendee> attendees {get;set;}
 
         public boolean hasError {get; set;}
         public List<string> errorMessages {get; set;}
@@ -186,6 +189,30 @@ global class skedModels {
                 this.allocations.add(allocation);
             }
         }
+
+        public void loadJobOffers(List<sked_Job_Offer__c> skedJobOffers) {
+            this.jobOffers = new List<jobOffer>();
+            for (sked_Job_Offer__c skedJobOffer : skedJobOffers) {
+                skedModels.jobOffer jobOffer = new skedModels.jobOffer();
+                jobOffer.id = skedJobOffer.Id;
+                jobOffer.jobId = skedJobOffer.sked_Job__c;
+                jobOffer.resourceId = skedJobOffer.sked_Resource__c;
+                if (skedJobOffer.sked_Resource__r != null) {
+                    skedModels.resource resource = new skedModels.resource();
+                    resource.id = skedJobOffer.sked_Resource__c;
+                    resource.name = skedJobOffer.sked_Resource__r.Name;
+                    if (skedJobOffer.sked_Resource__r.sked__User__r != null) {
+                        resource.photoUrl = skedJobOffer.sked_Resource__r.sked__User__r.SmallPhotoUrl;
+                    }
+                    jobOffer.resource = resource;
+                }
+                if (skedJobOffer.sked_Estimated_Travel_Time__c != NULL) {
+                    jobOffer.travelTimeFrom = integer.valueOf(skedJobOffer.sked_Estimated_Travel_Time__c);
+                }
+                jobOffer.travelDistanceFrom = skedJobOffer.sked_Estimated_Distance__c;
+                this.jobOffers.add(jobOffer);
+            }
+        }
     }
 
     global virtual class jobAllocation extends event {
@@ -204,7 +231,6 @@ global class skedModels {
         public decimal travelDistanceTo {get; set;}
         public boolean isQualified {get; set;}
         public boolean isAvailable {get; set;}
-        public string action {get; set;}
 
         public transient event previousEvent {get; set;}
         public transient event nextEvent {get; set;}
@@ -296,7 +322,6 @@ global class skedModels {
         public string weekday {get; set;}
         public integer startTime {get; set;}
         public integer endTime {get; set;}
-        public string action {get; set;}
     }
 
     /************************************************ SKEDULO CUSTOM MODELS ************************************************/
@@ -373,21 +398,22 @@ global class skedModels {
         public boolean attended {get; set;}
         public decimal cancellationFee {get; set;}
         public string cancellationReason {get; set;}
-
-        public string contactId {get; set;}
-        public contact contact {get; set;}
-
-        public string description {get; set;}
-
         public string jobId {get; set;}
+        public string contactId {get; set;}
+        public string description {get; set;}
+        
         public job job {get; set;}
+        public contact contact {get; set;}
     }
 
     global virtual class jobOffer extends modelBase {
         public string jobId {get; set;}
         public string resourceId {get; set;}
         public string status {get; set;}
+        public integer travelTimeFrom {get; set;}
+        public decimal travelDistanceFrom {get; set;}
         public job job {get; set;}
+        public resource resource {get;set;}
     }
 
     global virtual class patient extends modelBase {

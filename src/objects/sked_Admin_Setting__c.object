@@ -141,6 +141,14 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>sked_RAC_Enable_Shift__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>RAC Enable Shift</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>sked_RAC_First_Day__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
